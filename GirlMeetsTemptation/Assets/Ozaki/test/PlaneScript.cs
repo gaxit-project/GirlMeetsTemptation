@@ -13,13 +13,15 @@ public class PlaneScript : MonoBehaviour
     private int FirstStageIndex = 1;//スタート時にどのインデックスからステージを生成するのか
     public GameObject finalStagePrefab; // 最後に生成されるステージのプレハブ
     private bool FinalStage = false; // 最後のステージが生成されたかどうか
-    private int aheadStage = 3; //事前に生成しておくステージ
+    private int aheadStage = 2; //事前に生成しておくステージ
     public int totalStages; // 生成するステージの総数
     public List<GameObject> StageList = new List<GameObject>();//生成したステージのリスト
+    private PlayerMovement PlayerMovement;
 
     // Start is called before the first frame update
     void Start()
     {
+        PlayerMovement = FindObjectOfType<PlayerMovement>();
         StageIndex = FirstStageIndex - 1;
         StageManager(aheadStage);
     }
@@ -76,8 +78,42 @@ public class PlaneScript : MonoBehaviour
             return Instantiate(finalStagePrefab, new Vector3(0.96f, 9.73f, index * StageSize), Quaternion.identity);
         }
 
-        int nextStage = Random.Range(0, stagenum.Length);
+        int nextStage/* = Random.Range(0, stagenum.Length)*/;
 
+        float rand = Random.Range(0f, 1f); // 0.0 から 1.0 の乱数を取得
+        if(PlayerMovement.CheckTime()){
+        if (rand < 0.10f) // 10% の確率で stagenum[0]
+        {
+        nextStage = 0;
+        }
+        else if (rand < 0.50f) // 40% の確率で stagenum[1]
+        {
+        nextStage = 1;
+        }
+        else if (rand < 0.70f) // 20% の確率で stagenum[2]
+        {
+        nextStage = 2;
+        }
+        else // 30% の確率で stagenum[3]
+        {
+        nextStage = 3;
+        }
+        }else{
+        if (rand < 0.30f) // 30% の確率で stagenum[0]
+        {
+        nextStage = 0;
+        }else if (rand < 0.50f) // 20% の確率で stagenum[1]
+        {
+        nextStage = 1;
+        }else if (rand < 0.90f) // 40% の確率で stagenum[2]
+        {
+        nextStage = 2;
+        }else // 10% の確率で stagenum[3]
+        {
+        nextStage = 3;
+        }
+        }
+        
         GameObject stageObject = (GameObject)Instantiate(stagenum[nextStage], new Vector3(0, 0, index * StageSize), Quaternion.identity);
 
         return stageObject;

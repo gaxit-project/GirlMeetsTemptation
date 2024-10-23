@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1230,8 +1230,10 @@ MonoBehaviour:
   stagenum:
   - {fileID: 5631680600301392931, guid: 0d0a5f655e97b0343947176c7b225061, type: 3}
   - {fileID: 6475030808448374611, guid: ba3136939dfd05f41bd2f43cf4988b07, type: 3}
+  - {fileID: 6477963767702881855, guid: c07502a41ed5dab4389fe71650030a1e, type: 3}
+  - {fileID: 372710878001306611, guid: cc22d14f9896946418ad3ae283984ba2, type: 3}
   finalStagePrefab: {fileID: 6871275097401086919, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
-  totalStages: 4
+  totalStages: 8
   StageList:
   - {fileID: 1866142632}
 --- !u!4 &2069484619
@@ -1254,9 +1256,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 705507995}
-  - {fileID: 2069484619}
   - {fileID: 1021451879}
   - {fileID: 1614325260}
   - {fileID: 1330970461}
+  - {fileID: 2069484619}
   - {fileID: 1637191935}
   - {fileID: 422270260}
