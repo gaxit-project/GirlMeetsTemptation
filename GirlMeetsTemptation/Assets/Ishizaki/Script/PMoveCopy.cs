@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PMoveCopy : MonoBehaviour
 {
-    public float moveSpeed;
-    private float firstSpeed;
+    public float moveSpeed = 1f;
     public Camera playcamera;
     private int currentLane = 1; // 0: 左, 1: 中央, 2: 右 (初期位置は中央)
-    private bool phoneOn = true;      
-    private float elapsedTime = 0f;  // 経過時間を保持する変数
-    private bool isCounting = false;  // 計測中かどうかを示すフラグ   
+    private bool phoneOn = true;          
     private Quaternion targetRotation;// カメラのターゲットとなる回転角度を設定
 
     private InputAction MoveRAction;//右移動ボタンの押下状態
     private InputAction MoveLAction;//左移動ボタンの押下状態
     private InputAction ButtonBAction;//Bボタンの押下状態
+
     public GameObject phoneUI;
 
     // Start is called before the first frame update
@@ -24,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     {
         // 初期回転角度を設定
         targetRotation = playcamera.transform.rotation;
-        firstSpeed = moveSpeed;
 
         //InputSystem用
         var pInput = GetComponent<PlayerInput>();
@@ -42,39 +39,37 @@ public class PlayerMovement : MonoBehaviour
         bool MoveL = MoveLAction.triggered;
         bool ButtonB = ButtonBAction.triggered;
 
+        Debug.Log("MR=" + MoveR + " ML=" + MoveL + " B=" + ButtonB);
+
         // Shiftキーを押している間はプレイヤーを停止させる
-        if (!Input.GetKey(KeyCode.LeftShift))
-        {       
+        if (/*!Input.GetKey(KeyCode.LeftShift) || */!MoveR && !MoveL)
+        {
             // 前進
             transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
-            //moveSpeed += Time.deltaTime * 0.01f;
-        }else{
+            moveSpeed += Time.deltaTime * 0.01f;
         }
         // 左への移動
-        if (MoveL && currentLane > 0 && !Input.GetKey(KeyCode.LeftShift))
+        if ((/*Input.GetKeyDown(KeyCode.A) ||*/ MoveL) && currentLane > 0 && !Input.GetKey(KeyCode.LeftShift))
         {
             currentLane--;
             MoveToLane();
         }
 
         // 右への移動
-        if (MoveR && currentLane < 2 && !Input.GetKey(KeyCode.LeftShift))
+        if ((/*Input.GetKeyDown(KeyCode.D) ||*/ MoveR) && currentLane < 2 && !Input.GetKey(KeyCode.LeftShift))
         {
             currentLane++;
             MoveToLane();
         }
 
         //カメラの向きを変える
-        if (ButtonB)
+        if (/*Input.GetKeyDown(KeyCode.Q) ||*/ ButtonB)
         {
             phoneOn=!phoneOn;
             if(!phoneOn){
-                elapsedTime = 0f;
-                isCounting = false;
-                targetRotation = Quaternion.Euler(/*32*/0, playcamera.transform.rotation.eulerAngles.y, playcamera.transform.rotation.eulerAngles.z);
+            targetRotation = Quaternion.Euler(/*32*/0, playcamera.transform.rotation.eulerAngles.y, playcamera.transform.rotation.eulerAngles.z);
             }else{
-                isCounting = true;  // phoneOn が true のときは計測を停止
-                targetRotation = Quaternion.Euler(55, playcamera.transform.rotation.eulerAngles.y, playcamera.transform.rotation.eulerAngles.z);
+            targetRotation = Quaternion.Euler(55, playcamera.transform.rotation.eulerAngles.y, playcamera.transform.rotation.eulerAngles.z);
             }
         }
         // 現在の回転からターゲットの回転にゆっくりと変更する
@@ -88,20 +83,6 @@ public class PlayerMovement : MonoBehaviour
         {
             phoneUI.SetActive(false);
         }
-    }
-
-    public bool CheckTime(){// スマホ経過時間を加算
-        if(isCounting){
-            elapsedTime += Time.deltaTime;  
-        }else{
-            elapsedTime = 0f;
-        }
-        // 10秒が経過したかを判
-        if (elapsedTime >= 10f && isCounting)
-        {
-            return true;
-        }
-        return false;
     }
 
     // レーン間の移動を行う関数
@@ -122,23 +103,7 @@ public class PlayerMovement : MonoBehaviour
     public void setphoneOn(bool phone){
         phoneOn = phone;
     }
-    void OnTriggerEnter(Collider other)
-    {
-        // タグが "player" のオブジェクトに当たった場合
-        if (other.CompareTag("Passenger"))
-        {
-        // 後ろに少し下がるための力を加える
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            Vector3 knockback = -transform.forward * 5f; // 後ろに2の力を加える
-            rb.AddForce(knockback, ForceMode.VelocityChange);
-        }
 
-        // 一定時間、動きが遅くなる
-        StartCoroutine(SlowDownTemporarily());
-        }
-    }
     // スムーズなレーン移動
     IEnumerator LerpPosition(Vector3 targetPosition)
     {
@@ -151,12 +116,5 @@ public class PlayerMovement : MonoBehaviour
             transform.position = Vector3.Lerp(startPosition, targetPosition, time);
             yield return null;
         }
-    }
-
-    IEnumerator SlowDownTemporarily()
-    {
-        moveSpeed = moveSpeed / 3;       // 速度を半分にする
-        yield return new WaitForSeconds(5f); // 5秒間動きを遅くする
-        moveSpeed = firstSpeed;        // 元の速度に戻す
     }
 }
