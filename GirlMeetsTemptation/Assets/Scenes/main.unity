@@ -2459,6 +2459,57 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d0a5f655e97b0343947176c7b225061, type: 3}
+--- !u!1 &1368584522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1368584524}
+  - component: {fileID: 1368584523}
+  m_Layer: 0
+  m_Name: AudioManeger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1368584523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368584522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630c81468b9c3a6478e534f8eb231cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SE:
+  - {fileID: 8300000, guid: 651301d6792c0e94997d4cf55c96327e, type: 3}
+  - {fileID: 8300000, guid: 1011bb4679d997349945f00534bfa0d4, type: 3}
+  - {fileID: 8300000, guid: 909a590c96bac0a4f8787c74bd84b857, type: 3}
+  - {fileID: 8300000, guid: 0df247891ac5c5d4d8ef99b828a05cd6, type: 3}
+  - {fileID: 8300000, guid: 29dc9baee9b622345aac6b2b49997a3a, type: 3}
+  - {fileID: 8300000, guid: b34ec25047422df4b94498c363bd775a, type: 3}
+--- !u!4 &1368584524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368584522}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.699971, y: -10.869948, z: -62.55168}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1435292053
 GameObject:
   m_ObjectHideFlags: 0
@@ -3093,8 +3144,10 @@ MonoBehaviour:
   stagenum:
   - {fileID: 5631680600301392931, guid: 0d0a5f655e97b0343947176c7b225061, type: 3}
   - {fileID: 6475030808448374611, guid: ba3136939dfd05f41bd2f43cf4988b07, type: 3}
+  - {fileID: 6477963767702881855, guid: c07502a41ed5dab4389fe71650030a1e, type: 3}
+  - {fileID: 372710878001306611, guid: cc22d14f9896946418ad3ae283984ba2, type: 3}
   finalStagePrefab: {fileID: 6871275097401086919, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
-  totalStages: 4
+  totalStages: 8
   StageList:
   - {fileID: 1866142632}
 --- !u!4 &2069484619
@@ -3125,3 +3178,4 @@ SceneRoots:
   - {fileID: 1330970461}
   - {fileID: 1637191935}
   - {fileID: 422270260}
+  - {fileID: 1368584524}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Passengermove : MonoBehaviour
 {
     private bool crash = false;
+    private bool hasPlayedCrashSound = false; // サウンド再生管理用フラグ
     private float moveSpeed = 0.2f;
     private Animator animator;
     private Rigidbody rb;
@@ -28,10 +29,28 @@ public class Passengermove : MonoBehaviour
             transform.Translate(Vector3.back * Time.deltaTime * moveSpeed, Space.World);
             moveSpeed += Time.deltaTime * 0.01f;
             rb.constraints = RigidbodyConstraints.None;
-        }else{
+
+            // サウンド再生フラグをリセット
+            hasPlayedCrashSound = false;
+        }
+        else
+        {
             animator.SetBool("walking", false);
             rb.constraints = RigidbodyConstraints.FreezePositionZ;
+
+            // サウンドが再生されていない場合のみ再生
+            if (!hasPlayedCrashSound)
+            {
+                Audio.GetInstance().PlaySound(2);
+                hasPlayedCrashSound = true;  // 再生済みフラグを設定
+                StartCoroutine(PlaySecondSoundWithDelay(1f));
+            }
         }
+    }
+    IEnumerator PlaySecondSoundWithDelay(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);  // 指定時間待機
+        Audio.GetInstance().PlaySound(3);  // 次のサウンドを再生
     }
 
     void OnTriggerEnter(Collider other)

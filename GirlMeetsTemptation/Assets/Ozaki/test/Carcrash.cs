@@ -30,6 +30,7 @@ public class Carcrash : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isMoving = true; // 車の移動を開始
+            Audio.GetInstance().PlaySound(4);
         }
     }
     void OnTriggerExit(Collider other)
