@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Holedead : MonoBehaviour
+public class MarkDeleyr : MonoBehaviour
 {
     // Start is called before the first frame update
-    private bool holed = false;
     void Start()
     {
         
@@ -21,13 +20,8 @@ public class Holedead : MonoBehaviour
         // タグが "player" のオブジェクトに当たった場合
         if (other.CompareTag("Player"))
         {
-            holed = true;
-            // Scene の EndGame メソッドを呼び出す
-            Scene.GetInstance().EndGame();
+            Destroy(this.gameObject);
+            
         }
-    }
-
-    public bool getHoled(){
-        return holed;
     }
 }
