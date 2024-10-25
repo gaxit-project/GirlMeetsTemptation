@@ -11,7 +11,7 @@ public class Timelimit : MonoBehaviour
     private float gaugeDuration = 20f;  // ゲージが増加する時間
     public Image tempgauge;
     public Material customSkyboxMaterial; // InspectorでセットできるカスタムSkyBox用のマテリアル
-    private Camera mainCamera; // mainCameraの参照
+    public Camera mainCamera; // mainCameraの参照
     private int displayTime;
  
     //時間を表示するText型の変数
@@ -23,8 +23,7 @@ public class Timelimit : MonoBehaviour
         nizigauge.gameObject.SetActive(false);
         tempgauge.fillAmount = 0;
         PlayerMovement = FindObjectOfType<PlayerMovement>();
-        // mainCameraを取得
-        mainCamera = Camera.main;
+        
     }
     void Update()
     {
@@ -45,6 +44,7 @@ public class Timelimit : MonoBehaviour
         }
         else
         {
+            GameOver.SetMessage("時間が切れて死んだ");
             Scene.GetInstance().EndGame();
         }
     }
@@ -70,7 +70,6 @@ public class Timelimit : MonoBehaviour
         if(tempgauge.fillAmount == 1){
             nizigauge.gameObject.SetActive(true);
         }
-        //Debug.Log(gaugeDuration);
 
         // ゲージの値を範囲内に制限する
         gaugeDuration = Mathf.Clamp(gaugeDuration, 0, 40);
@@ -86,6 +85,7 @@ public class Timelimit : MonoBehaviour
         PlayerMovement.setphoneOn(true);
         PlayerMovement.setkyouran(true);
         yield return new WaitForSeconds(delay);
+        GameOver.SetMessage("踊り狂って死んだ");
         Scene.GetInstance().EndGame();
     }
 

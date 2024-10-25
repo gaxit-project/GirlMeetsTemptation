@@ -1687,7 +1687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 597, y: 12}
+  m_AnchoredPosition: {x: 597, y: -6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &232415981
@@ -4456,6 +4456,7 @@ MonoBehaviour:
   nizigauge: {fileID: 1617934759}
   tempgauge: {fileID: 193792706}
   customSkyboxMaterial: {fileID: 2100000, guid: e40cdfec4a625c146b24611cb9347f36, type: 2}
+  mainCamera: {fileID: 1267495422}
   timeText: {fileID: 1109576814}
 --- !u!114 &1021451881
 MonoBehaviour:
@@ -5838,7 +5839,7 @@ GameObject:
   - component: {fileID: 1267495423}
   - component: {fileID: 1267495425}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: PlayerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7451,7 +7452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1580546053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9103,7 +9104,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -539, y: 518}
+  m_AnchoredPosition: {x: -539, y: 505}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1965369811
@@ -9628,7 +9629,7 @@ MonoBehaviour:
   - {fileID: 6477963767702881855, guid: c07502a41ed5dab4389fe71650030a1e, type: 3}
   - {fileID: 372710878001306611, guid: cc22d14f9896946418ad3ae283984ba2, type: 3}
   finalStagePrefab: {fileID: 6871275097401086919, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
-  totalStages: 8
+  totalStages: 4
   StageList:
   - {fileID: 1866142632}
 --- !u!4 &2069484619

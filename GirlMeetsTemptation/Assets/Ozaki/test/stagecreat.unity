@@ -3846,7 +3846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5631680600301392931, guid: 0d0a5f655e97b0343947176c7b225061, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4677,6 +4677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   playcamera: {fileID: 901330295}
+  phoneUI: {fileID: 0}
 --- !u!65 &1282091028
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7609,7 +7610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 372710878001306611, guid: cc22d14f9896946418ad3ae283984ba2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6476138772766560251, guid: cc22d14f9896946418ad3ae283984ba2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7656,6 +7657,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc22d14f9896946418ad3ae283984ba2, type: 3}
+--- !u!1001 &8851082948629696538
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6057478831401601405, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057478831401601405, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057478831401601405, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057478831401601405, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057478831401601405, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057478831401601405, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057478831401601405, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057478831401601405, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057478831401601405, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057478831401601405, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871275097401086919, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
+      propertyPath: m_Name
+      value: infrastructure-building-cemetary
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871275097401086919, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -7669,3 +7731,4 @@ SceneRoots:
   - {fileID: 1728346094241769646}
   - {fileID: 1333134243}
   - {fileID: 1434270932}
+  - {fileID: 8851082948629696538}

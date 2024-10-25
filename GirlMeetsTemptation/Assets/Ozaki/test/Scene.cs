@@ -34,7 +34,20 @@ public class Scene : MonoBehaviour
     {
         
     }
+    public void ClearGame(){
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameClear");
+    }
+    public void TitleGame(){
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
+    }
+    public void MainGame(){
+        UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+    }
     public void EndGame() //Quit
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Gameover");
+    }
+    public void QuitGame()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -42,4 +55,5 @@ public class Scene : MonoBehaviour
             Application.Quit();
 #endif
     }
+    
 }

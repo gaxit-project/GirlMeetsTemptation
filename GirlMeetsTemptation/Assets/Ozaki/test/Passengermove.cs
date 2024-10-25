@@ -6,7 +6,7 @@ public class Passengermove : MonoBehaviour
 {
     private bool crash = false;
     private bool hasPlayedCrashSound = false; // サウンド再生管理用フラグ
-    private float moveSpeed = 0.2f;
+    private float moveSpeed = 0.1f;
     private Animator animator;
     private Rigidbody rb;
     private BoxCollider col;

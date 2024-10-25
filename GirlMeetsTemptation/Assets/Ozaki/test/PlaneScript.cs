@@ -13,7 +13,7 @@ public class PlaneScript : MonoBehaviour
     private int FirstStageIndex = 1;//スタート時にどのインデックスからステージを生成するのか
     public GameObject finalStagePrefab; // 最後に生成されるステージのプレハブ
     private bool FinalStage = false; // 最後のステージが生成されたかどうか
-    private int aheadStage = 2; //事前に生成しておくステージ
+    private int aheadStage = 3; //事前に生成しておくステージ
     public int totalStages; // 生成するステージの総数
     public List<GameObject> StageList = new List<GameObject>();//生成したステージのリスト
     private PlayerMovement PlayerMovement;

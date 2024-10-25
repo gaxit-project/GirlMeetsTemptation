@@ -21,9 +21,31 @@ public class Holedead : MonoBehaviour
         // タグが "player" のオブジェクトに当たった場合
         if (other.CompareTag("Player"))
         {
+            if(gameObject.name == "Cleareria")
+            {
+                Scene.GetInstance().ClearGame();
+            }
+            else
+            {
             holed = true;
-            // Scene の EndGame メソッドを呼び出す
+           string message;
+            switch (gameObject.name)
+            {
+                case "hole":
+                    message = "穴に落ちて死んだ";
+                    break;
+                case "Car":
+                    message = "車に轢かれて死んだ";
+                    break;
+                default:
+                    message = "";
+                    break;
+            }
+
+            // GameOver にメッセージを設定して、EndGame メソッドを呼び出す
+            GameOver.SetMessage(message);
             Scene.GetInstance().EndGame();
+            }
         }
     }
 
