@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -418,7 +418,7 @@ RectTransform:
   m_GameObject: {fileID: 53271363}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 1.1, z: 1}
+  m_LocalScale: {x: 0.4, y: 1.045055, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1937222676}
@@ -1241,7 +1241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 597, y: 12}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &422270257
@@ -2008,7 +2008,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdown: 100
+  nizigauge: {fileID: 1617934759}
   tempgauge: {fileID: 193792706}
+  customSkyboxMaterial: {fileID: 2100000, guid: e40cdfec4a625c146b24611cb9347f36, type: 2}
   timeText: {fileID: 1109576814}
 --- !u!114 &1021451881
 MonoBehaviour:
@@ -2071,7 +2073,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &1109576812
 GameObject:
@@ -2317,6 +2319,7 @@ GameObject:
   - component: {fileID: 1267495424}
   - component: {fileID: 1267495422}
   - component: {fileID: 1267495423}
+  - component: {fileID: 1267495425}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2398,6 +2401,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 799357014}
   m_LocalEulerAnglesHint: {x: 55, y: 0.621, z: 0.003}
+--- !u!45 &1267495425
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267495421}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
 --- !u!1001 &1330970461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2495,6 +2507,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0df247891ac5c5d4d8ef99b828a05cd6, type: 3}
   - {fileID: 8300000, guid: 29dc9baee9b622345aac6b2b49997a3a, type: 3}
   - {fileID: 8300000, guid: b34ec25047422df4b94498c363bd775a, type: 3}
+  - {fileID: 8300000, guid: 4e3071b2a29ce6b4f9902dd436482c72, type: 3}
 --- !u!4 &1368584524
 Transform:
   m_ObjectHideFlags: 0
@@ -2736,7 +2749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1580546053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2890,6 +2903,81 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 799357015}
   m_SourcePrefab: {fileID: 100100000, guid: 00e7b4e088847b641bdda538450547db, type: 3}
+--- !u!1 &1617934757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1617934758}
+  - component: {fileID: 1617934760}
+  - component: {fileID: 1617934759}
+  m_Layer: 0
+  m_Name: nizigauge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1617934758
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617934757}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.3, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1937222676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -358.9, y: -129.7}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1617934759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617934757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 061ddd11894f3864fa02f0c2042a5759, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1617934760
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617934757}
+  m_CullTransparentMesh: 1
 --- !u!1 &1637191933
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,19 +3184,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937222675}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2.0922153, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 53271364}
   - {fileID: 1143591204}
   - {fileID: 193792705}
+  - {fileID: 1617934758}
   m_Father: {fileID: 1021451879}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -539, y: 518}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2069484617

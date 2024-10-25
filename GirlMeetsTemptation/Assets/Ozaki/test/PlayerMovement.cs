@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isCounting = false;  // 計測中かどうかを示すフラグ
     private bool walk = true;//歩いているかフラグ
     private bool hasFallen = false;  // 落ちたかどうかを管理するフラグ
+    private bool kyouran = false;
     private Quaternion targetRotation;// カメラのターゲットとなる回転角度を設定
     private Holedead holedead;
 
@@ -76,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //カメラの向きを変える
-        if (ButtonB)
+        if (ButtonB && !kyouran)
         {
             phoneOn=!phoneOn;
             if(!phoneOn){
@@ -134,6 +135,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void setphoneOn(bool phone){
         phoneOn = phone;
+    }
+
+    public void setkyouran(bool kyou){
+        kyouran = kyou;
     }
     void OnTriggerEnter(Collider other)
     {

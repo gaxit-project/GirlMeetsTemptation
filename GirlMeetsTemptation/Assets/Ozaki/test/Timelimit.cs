@@ -7,8 +7,11 @@ public class Timelimit : MonoBehaviour
 {
     //カウントダウン
     public float countdown;
+    public Image nizigauge;
     private float gaugeDuration = 20f;  // ゲージが増加する時間
     public Image tempgauge;
+    public Material customSkyboxMaterial; // InspectorでセットできるカスタムSkyBox用のマテリアル
+    private Camera mainCamera; // mainCameraの参照
     private int displayTime;
  
     //時間を表示するText型の変数
@@ -17,8 +20,11 @@ public class Timelimit : MonoBehaviour
  
     void Start()
     {
+        nizigauge.gameObject.SetActive(false);
         tempgauge.fillAmount = 0;
         PlayerMovement = FindObjectOfType<PlayerMovement>();
+        // mainCameraを取得
+        mainCamera = Camera.main;
     }
     void Update()
     {
@@ -45,7 +51,10 @@ public class Timelimit : MonoBehaviour
 
     private void UpdateGauge()
     {
-        
+        if(tempgauge.fillAmount == 1){
+            nizigauge.gameObject.SetActive(true);
+            StartCoroutine(EndGameAfterDelay(10f));
+        }else{
         // ゲージのfillAmountを更新 (0から1の範囲)
         if (PlayerMovement.getphoneOn())
         {
@@ -57,12 +66,27 @@ public class Timelimit : MonoBehaviour
             // プレイヤーが「phoneOff」のときゲージは増加する
             gaugeDuration += Time.deltaTime;
         }
+        //狂乱
+        if(tempgauge.fillAmount == 1){
+            nizigauge.gameObject.SetActive(true);
+        }
+        Debug.Log(gaugeDuration);
 
         // ゲージの値を範囲内に制限する
-        gaugeDuration = Mathf.Clamp(gaugeDuration, 0, 30);
+        gaugeDuration = Mathf.Clamp(gaugeDuration, 0, 40);
 
         // ゲージのfillAmountを更新
-        tempgauge.fillAmount = Mathf.Clamp01(gaugeDuration / 20f);
+        tempgauge.fillAmount = Mathf.Clamp01(gaugeDuration / 40f);
+        }
+    }
+    private IEnumerator EndGameAfterDelay(float delay)
+    {
+        Audio.GetInstance().PlaySound(6);
+        mainCamera.GetComponent<Skybox>().material = customSkyboxMaterial;
+        PlayerMovement.setphoneOn(true);
+        PlayerMovement.setkyouran(true);
+        yield return new WaitForSeconds(delay);
+        Scene.GetInstance().EndGame();
     }
 
     public int getTime(){
