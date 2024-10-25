@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Composites;
 
 public class LineButtom : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class LineButtom : MonoBehaviour
     public GameObject ManeChanTalk;
     public GameObject Tomodati1Talk;
     public GameObject Tomodati2Talk;
+    public GameObject PhoneUI;
+    public GameObject PhoneLineUI;
 
     //ライン用のフラグたち
     public static bool KarepiFlag = false;
@@ -46,6 +49,7 @@ public class LineButtom : MonoBehaviour
     public static int SelectX, SelectC, SelectV;
 
     bool MenuFlag = true;
+    bool HomeBack = true;
     //インプットシステム
     private InputAction LineX;
     private InputAction LineA;
@@ -55,15 +59,16 @@ public class LineButtom : MonoBehaviour
     void Start()
     {
         Karepi.Select();
-        //if(//ラインフラグがオフなら)
-        //{
-        //    TalkHome.SetActive(false);
-        //    KarepiTalk.SetActive(false);
-        //    OshiTalk.SetActive(false);
-        //    ManeChanTalk.SetActive(false);
-        //    Tomodati1Talk.SetActive(false);
-        //    Tomodati2Talk.SetActive(false);
-        //}
+        if (!ButtonManager.TwiXFlag)
+        {
+            TalkHome.SetActive(false);
+            KarepiTalk.SetActive(false);
+            OshiTalk.SetActive(false);
+            ManeChanTalk.SetActive(false);
+            Tomodati1Talk.SetActive(false);
+            Tomodati2Talk.SetActive(false);
+            PhoneLineUI.SetActive(false);
+        }
 
         var pInput = GetComponent<PlayerInput>();
         var actionMap = pInput.currentActionMap;
@@ -76,11 +81,18 @@ public class LineButtom : MonoBehaviour
 
     private void Update()
     {
-        
-        //if(//ラインフラグがオンなら)
-        //{
-        //    TalkHome.SetActive(true);
-        //    Karepi.Select();
+
+        if (ButtonManager.TwiXFlag)
+        {
+            if (ButtonManager.TwiXFirstFlag)
+            {
+                TalkHome.SetActive(true);
+                PhoneUI.SetActive(false);
+                PhoneLineUI.SetActive(true);
+                Karepi.Select();
+                ButtonManager.TwiXFirstFlag = false;
+            }
+        }
         //戻る
         if(!MenuFlag)
         {
@@ -111,13 +123,13 @@ public class LineButtom : MonoBehaviour
                 VButtonFlag = false;
                 ButtonOFFFlag = false;
                 TextRndFlag = true;
-                MenuFlag = true;
                 KarepiFlag = false;
                 ManeChanFlag = false;
                 OshiFlag = false;
                 Tomodati1Flag = false;
                 Tomodati2Flag = false;
                 SelectTextUIFlag = false;
+                Invoke(nameof(MenuStart),0.5f);
             }
             if (LineButtonX && !ButtonOFFFlag || Input.GetKey(KeyCode.X) && !ButtonOFFFlag)
             {
@@ -165,8 +177,22 @@ public class LineButtom : MonoBehaviour
                 ButtonOFFFlag = true;
             }
         }
-        
-        //}
+        // lineメニューにいた時の処理
+        else if(MenuFlag && HomeBack)
+        {
+            // lineを閉じる
+            bool LineButtonY = LineY.triggered;
+            if (Input.GetKey(KeyCode.Z) || LineButtonY)
+            {
+                Debug.Log("こんちくわんこひひ");
+                TalkHome.SetActive(false);
+                PhoneLineUI.SetActive(false);
+                PhoneUI.SetActive(true);
+                ButtonManager.TwiXFlag = false;
+            }
+        }
+
+    
     }
     public static void SelectKey(int Select1Cnt, int Select2Cnt, int Select3Cnt)
     {
@@ -278,6 +304,12 @@ public class LineButtom : MonoBehaviour
     }
     public void MenuStop()
     {
+        HomeBack = false;
         MenuFlag = false;
+    }
+    public void MenuStart()
+    {
+        HomeBack = true;
+        MenuFlag = true;
     }
 }

@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
         // 現在の回転からターゲットの回転にゆっくりと変更する
         playcamera.transform.rotation = Quaternion.Slerp(playcamera.transform.rotation, targetRotation, Time.deltaTime * 2f);
 
-        if (phoneOn)
+        if (phoneOn && !ButtonManager.TwiXFlag)
         {
             phoneUI.SetActive(true);
         }

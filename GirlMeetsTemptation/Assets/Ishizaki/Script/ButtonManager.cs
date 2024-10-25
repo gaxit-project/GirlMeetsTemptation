@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ButtonManager : MonoBehaviour
 {
+    public static bool TwiXFlag = false;
+    public static bool TwiXFirstFlag = false;
     public void ClickButton(string button)
     {
         switch (button)
@@ -13,6 +15,8 @@ public class ButtonManager : MonoBehaviour
                 break;
             case "Twitter":
                 Debug.Log(button + "‚ª‰Ÿ‚³‚ê‚½I");
+                TwiXFlag = true;
+                TwiXFirstFlag = true;
                 break;
             case "Game":
                 Debug.Log(button + "‚ª‰Ÿ‚³‚ê‚½I");

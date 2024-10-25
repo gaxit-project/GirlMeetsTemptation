@@ -43,7 +43,7 @@ public class ManeChanLineChat : MonoBehaviour
     public void Update()
     {
         //マネージャーのライン起動
-        if(/*ラインのフラグオン &&*/ LineButtom.ManeChanFlag)
+        if(ButtonManager.TwiXFlag && LineButtom.ManeChanFlag)
         {
             //ラインタスクがオンになったとき
             if (LineTaskFlagON)
@@ -131,7 +131,7 @@ public class ManeChanLineChat : MonoBehaviour
                     {
                         SelectStack.Clear();
                         SelectStack.Push("いいね！リップクリーチャーのリップなら映えそうだし、衣装とも合いそう。どう？撮影で実際に使ってみる？");
-                        SelectStack.Push("最近さ、リップクリーチャーの新作リップ買っちゃったんだ💄 もうね、発色が良すぎて最高なの！これ、次の撮影で使いたいな～");
+                        SelectStack.Push("最近さ、リップクリーチャーの新作リップ買っちゃったんだ！ もうね、発色が良すぎて最高なの！これ、次の撮影で使いたいな～");
                         Debug.Log("テキスト2表示");
                         StartCoroutine(Text());
                         // 選択肢のスタックの準備
@@ -158,7 +158,7 @@ public class ManeChanLineChat : MonoBehaviour
                     }
                     else if (LineButtom.VButtonFlag)
                     {
-                        SelectStack.Push("もちろん使う！衣装との組み合わせも完璧だから、絶対バッチリ映えると思う💋");
+                        SelectStack.Push("もちろん使う！衣装との組み合わせも完璧だから、絶対バッチリ映えると思う！");
                         SelectStack.Push("OK！メイクさんにも伝えておくよ。これは間違いなく映えるね！");
                         LineButtom.VButtonFlag = false;
                         StartCoroutine(Text2());
@@ -170,7 +170,7 @@ public class ManeChanLineChat : MonoBehaviour
                     {
                         SelectStack.Clear();
                         SelectStack.Push("わかるよ。でも今回はVIP枠で君を招待してるから、注目されるチャンスだよ？参加するだけでかなり大きな話題になるはず");
-                        SelectStack.Push("ねぇ、マネージャー。今度のイベント、正直行くの面倒だなぁ…😩 行ったほうがいいのは分かってるけど、ちょっと気分が乗らないかも");
+                        SelectStack.Push("ねぇ、マネージャー。今度のイベント、正直行くの面倒だなぁ… 行ったほうがいいのは分かってるけど、ちょっと気分が乗らないかも");
                         Debug.Log("テキスト3表示");
                         StartCoroutine(Text());
                         // 選択肢のスタックの準備
@@ -184,7 +184,7 @@ public class ManeChanLineChat : MonoBehaviour
                     if (LineButtom.XButtonFlag)
                     {
                         SelectStack.Push("うーん…まあ仕方ないけど、少しもったいない気もするな");
-                        SelectStack.Push("やっぱり行かない！家でゴロゴロしたいの…😤");
+                        SelectStack.Push("やっぱり行かない！家でゴロゴロしたいの…");
                         LineButtom.XButtonFlag = false;
                         StartCoroutine(Text2());
                     }
@@ -198,7 +198,7 @@ public class ManeChanLineChat : MonoBehaviour
                     else if (LineButtom.VButtonFlag)
                     {
                         SelectStack.Push("それがいい！映えスポットも調べておくから、準備は任せて！");
-                        SelectStack.Push("それなら行こうかな！映えを狙って、バッチリ決めていく📸");
+                        SelectStack.Push("それなら行こうかな！映えを狙って、バッチリ決めていく");
                         LineButtom.VButtonFlag = false;
                         StartCoroutine(Text2());
                     }
@@ -209,7 +209,7 @@ public class ManeChanLineChat : MonoBehaviour
                     {
                         SelectStack.Clear();
                         SelectStack.Push("今週はちょっと忙しいけど、来週ならなんとか調整できそうだよ");
-                        SelectStack.Push("ねぇ、たまにはしっかり休みたいんだけど、次の休暇っていつ取れるかな？ちょっとリフレッシュしたくて…😌");
+                        SelectStack.Push("ねぇ、たまにはしっかり休みたいんだけど、次の休暇っていつ取れるかな？ちょっとリフレッシュしたくて…");
                         Debug.Log("テキスト4表示");
                         StartCoroutine(Text());
                         // 選択肢のスタックの準備
@@ -230,7 +230,7 @@ public class ManeChanLineChat : MonoBehaviour
                     else if (LineButtom.CButtonFlag)
                     {
                         SelectStack.Push("了解！来週は仕事の連絡もなしで、しっかりリフレッシュして");
-                        SelectStack.Push("やったー！じゃあ来週は思いっきりのんびりするね～✨");
+                        SelectStack.Push("やったー！じゃあ来週は思いっきりのんびりするね～");
                         LineButtom.CButtonFlag = false;
                         StartCoroutine(Text2());
                     }
@@ -262,7 +262,7 @@ public class ManeChanLineChat : MonoBehaviour
                     if (LineButtom.XButtonFlag)
                     {
                         SelectStack.Push("いいね！サポートは任せて。きっと盛り上がるよ！");
-                        SelectStack.Push("それいいかも！週末に配信やっちゃおうかな🎥");
+                        SelectStack.Push("それいいかも！週末に配信やっちゃおうかな");
                         LineButtom.XButtonFlag = false;
                         StartCoroutine(Text2());
                     }
@@ -276,7 +276,7 @@ public class ManeChanLineChat : MonoBehaviour
                     else if (LineButtom.VButtonFlag)
                     {
                         SelectStack.Push("まぁ、少し大変だけどやってみる価値はあると思うよ");
-                        SelectStack.Push("配信って準備がちょっと面倒なんだよなぁ😅");
+                        SelectStack.Push("配信って準備がちょっと面倒なんだよなぁ");
                         LineButtom.VButtonFlag = false;
                         StartCoroutine(Text2());
                     }
@@ -308,7 +308,7 @@ public class ManeChanLineChat : MonoBehaviour
                     else if (LineButtom.CButtonFlag)
                     {
                         SelectStack.Push("それだね！映える準備、こっちでしっかり整えておくよ");
-                        SelectStack.Push("じゃあこれにする！当日バッチリ決めていくね💃");
+                        SelectStack.Push("じゃあこれにする！当日バッチリ決めていくね");
                         LineButtom.CButtonFlag = false;
                         StartCoroutine(Text2());
                     }
@@ -354,7 +354,7 @@ public class ManeChanLineChat : MonoBehaviour
                     else if (LineButtom.VButtonFlag)
                     {
                         SelectStack.Push("まぁ、疲れるのもわかるけど、仕事だし頑張ろうよ」");
-                        SelectStack.Push("どっちもパスで。旅行は疲れるから嫌だな😓");
+                        SelectStack.Push("どっちもパスで。旅行は疲れるから嫌だな");
                         LineButtom.VButtonFlag = false;
                         StartCoroutine(Text2());
                     }
@@ -379,14 +379,14 @@ public class ManeChanLineChat : MonoBehaviour
                     if (LineButtom.XButtonFlag)
                     {
                         SelectStack.Push("気持ちはわかるけど、無視するほうが効果的なことも多いんだ");
-                        SelectStack.Push("もう嫌だ…全部消してほしい😢");
+                        SelectStack.Push("もう嫌だ…全部消してほしい");
                         LineButtom.XButtonFlag = false;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.CButtonFlag)
                     {
                         SelectStack.Push("その意気だよ！アンチに負けずに進もう");
-                        SelectStack.Push("無視するのが一番だよね。私は私のままでいく💪");
+                        SelectStack.Push("無視するのが一番だよね。私は私のままでいく");
                         LineButtom.CButtonFlag = false;
                         StartCoroutine(Text2());
                     }
@@ -418,7 +418,7 @@ public class ManeChanLineChat : MonoBehaviour
                     if (LineButtom.XButtonFlag)
                     {
                         SelectStack.Push("レビュー楽しみにしてるよ！絶対似合うと思う");
-                        SelectStack.Push("買ってみる！試してみるのが楽しみだな💄");
+                        SelectStack.Push("買ってみる！試してみるのが楽しみだな");
                         LineButtom.XButtonFlag = false;
                         StartCoroutine(Text2());
                     }
