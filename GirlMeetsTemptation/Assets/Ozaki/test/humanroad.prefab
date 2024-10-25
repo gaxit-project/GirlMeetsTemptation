@@ -7115,7 +7115,7 @@ MonoBehaviour:
   animations: []
   delayWeight: 0
   isKeepFace: 0
-  isGUI: 1
+  isGUI: 0
 --- !u!114 &3134215034849494343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8170,7 +8170,7 @@ MonoBehaviour:
   animations: []
   delayWeight: 0
   isKeepFace: 0
-  isGUI: 1
+  isGUI: 0
 --- !u!114 &6979149527941452930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8490,7 +8490,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: ccf2553d159754da6b08936ec9999869, type: 2}
   delayWeight: 0
   isKeepFace: 0
-  isGUI: 1
+  isGUI: 0
 --- !u!114 &5825407204113551953
 MonoBehaviour:
   m_ObjectHideFlags: 0
