@@ -45,6 +45,7 @@ public class KarepiLineChat : MonoBehaviour
                 {
                     //通常時のラインテキストランダム表示
                     LineRndCnt = Random.Range(1, 10);
+                    LineRndCnt = 1;
                     //LineRndCnt = 1;
                     if (LineRndCnt < 5)
                     {
@@ -64,7 +65,7 @@ public class KarepiLineChat : MonoBehaviour
                         Debug.Log("テキスト1表示");
                         //スタックの中身をリセット
                         SelectStack.Clear();
-                        SelectStack.Push("それいいね！実はあのカフェ、今めちゃくちゃ人気らしいよ。予約しないと入れないかも");
+                        SelectStack.Push("それいいね！\n実はあのカフェ、今めちゃくちゃ\n人気らしいよ。予約しないと入れないかも");
                         SelectStack.Push("ねぇ、明日の撮影、頑張ったらご褒美で甘いもの食べに行きたいな！🍰 前から気になってた〇〇のケーキ、食べてみたいかも～");
                         StartCoroutine(Text());
                         LineButtom.FirstText = false;

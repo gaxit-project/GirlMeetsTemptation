@@ -41,6 +41,7 @@ public class LineButtom : MonoBehaviour
     public static bool Text9 = false;
     public static bool FirstText = false;
     public static bool TextRndFlag = true;
+    public static bool SelectTextUIFlag = false;
 
     public static int SelectX, SelectC, SelectV;
 
@@ -111,6 +112,12 @@ public class LineButtom : MonoBehaviour
                 ButtonOFFFlag = false;
                 TextRndFlag = true;
                 MenuFlag = true;
+                KarepiFlag = false;
+                ManeChanFlag = false;
+                OshiFlag = false;
+                Tomodati1Flag = false;
+                Tomodati2Flag = false;
+                SelectTextUIFlag = false;
             }
             if (LineButtonX && !ButtonOFFFlag || Input.GetKey(KeyCode.X) && !ButtonOFFFlag)
             {
@@ -124,6 +131,7 @@ public class LineButtom : MonoBehaviour
                     Debug.Log("Xボタンが押されました");
                     XButtonFlag = true;
                 }
+                SelectTextUIFlag = false;
                 ButtonOFFFlag = true;
             }
             else if (LineButtonA && !ButtonOFFFlag || Input.GetKey(KeyCode.C) && !ButtonOFFFlag)
@@ -138,6 +146,7 @@ public class LineButtom : MonoBehaviour
                     Debug.Log("Cボタンが押されました");
                     CButtonFlag = true;
                 }
+                SelectTextUIFlag = false;
                 ButtonOFFFlag = true;
             }
             else if (LineButtonB && !ButtonOFFFlag || Input.GetKey(KeyCode.V) && !ButtonOFFFlag)
@@ -152,6 +161,7 @@ public class LineButtom : MonoBehaviour
                     Debug.Log("Vボタンが押されました");
                     VButtonFlag = true;
                 }
+                SelectTextUIFlag = false;
                 ButtonOFFFlag = true;
             }
         }

@@ -29,17 +29,13 @@ public class ScrollLine : MonoBehaviour
                 ScrollValue = 0;
             }
              Scroll.value = ScrollValue;
-       
         }
         
     }
     public void scrollValueUp()
     {
-        ScrollStop = true;
-                    ScrollValue = 0;
-            Scroll.value = ScrollValue;
-        
-        
+        ScrollValue = 0;
+        Scroll.value = ScrollValue;   
     }
     private void OnEnable()
     {
