@@ -101,6 +101,8 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             phoneUI.SetActive(false);
+            MiniGameManager.isStart = false;
+            MiniGameManager.isOpen = false;
         }
     }
 

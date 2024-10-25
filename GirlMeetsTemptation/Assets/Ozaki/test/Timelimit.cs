@@ -70,7 +70,7 @@ public class Timelimit : MonoBehaviour
         if(tempgauge.fillAmount == 1){
             nizigauge.gameObject.SetActive(true);
         }
-        Debug.Log(gaugeDuration);
+        //Debug.Log(gaugeDuration);
 
         // ゲージの値を範囲内に制限する
         gaugeDuration = Mathf.Clamp(gaugeDuration, 0, 40);

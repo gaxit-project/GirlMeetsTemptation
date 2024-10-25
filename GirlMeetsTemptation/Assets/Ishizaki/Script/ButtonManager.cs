@@ -16,6 +16,7 @@ public class ButtonManager : MonoBehaviour
                 break;
             case "Game":
                 Debug.Log(button + "‚ª‰Ÿ‚³‚ê‚½I");
+                MiniGameManager.isOpen = true;
                 break;
             case "Spotify":
                 Debug.Log(button + "‚ª‰Ÿ‚³‚ê‚½I");
