@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ManeChanLineChat : MonoBehaviour
 {
     [SerializeField] private LineContent contentManager;
     [SerializeField] private ScrollLine ScrollManager;
-    public static bool LineTaskFlagON = false;
     int LineRndCnt;
     string LineText;
 
@@ -23,7 +23,12 @@ public class ManeChanLineChat : MonoBehaviour
 
     bool TopicSelectFlag = false;
     string TopicSelectText;
-    
+
+    // 選択肢の評価用の処理
+    [SerializeField] GameObject EvaluationCanvas;
+    [SerializeField] GameObject EvaluationImage;
+    [SerializeField] TextMeshProUGUI EvaluationText;
+
 
 
     private void Start()
@@ -37,7 +42,6 @@ public class ManeChanLineChat : MonoBehaviour
         //Debug.Log("fjkasdf");
 
         LineButtom.TextRndFlag = true;
-        LineTaskFlagON = false;
     }
 
     public void Update()
@@ -46,9 +50,65 @@ public class ManeChanLineChat : MonoBehaviour
         if(ButtonManager.TwiXFlag && LineButtom.ManeChanFlag)
         {
             //ラインタスクがオンになったとき
-            if (LineTaskFlagON)
+            if (Notice.ManeLineTaskFlagON)
             {
+                int number1 = Notice.NoticeCnt;
+                Debug.Log("ラインタスクのフラグ:" + number1);
+                if(number1 == 1)
+                {
+                    if(Notice.FirstTaskText)
+                    {
+                        contentManager.AddToLeftText("魔王魂さんの「アジトへの道」っていう曲がめちゃめちゃいいの！時間あるときにでも気分転換に聴いて！");
+                        ScrollManager.scrollValueUp();
+                        // 選択肢のスタックの準備
+                        LineStack.Clear();
+                        LineStack.Push("オーケストラの曲");
+                        LineStack.Push("サイバー\nな曲");
+                        LineStack.Push("宇宙を\n感じた...");
+                        LineButtom.SelectTextUIFlag = true;
+                        Notice.FirstTaskText = false;
+                    }
 
+                    if (LineButtom.XButtonFlag)
+                    {
+                        //スタックの中身をリセット
+                        SelectStack.Clear();
+                        SelectStack.Push("え？宇宙？？一応サイバーな雰囲気の曲だからそうともいえるのかな...?");
+                        SelectStack.Push("なんか、これ聴いてたら宇宙を漂ってる気分になったんだけど…私だけかな？");
+                        Debug.Log("ボタンのフラグがオンになりました:" + LineButtom.XButtonFlag);
+                        LineButtom.LineNormal = true;
+                        LineButtom.XButtonFlag = false;
+                        StartCoroutine(Text2());
+                    }
+                    else if (LineButtom.CButtonFlag)
+                    {
+                        //スタックの中身をリセット
+                        SelectStack.Clear();
+                        SelectStack.Push("おぉ！そうそう、絶対君の好みに合うと思ったんだ。次の撮影BGMにも使えそうだよね！");
+                        SelectStack.Push("これ、ヤバいね！サイバーパンクっぽいビートでめっちゃカッコよかった！こういう感じの曲、テンション上がるから私大好きだよ");
+                        LineButtom.CButtonFlag = false;
+                        LineButtom.LinePerfect = true;
+                        StartCoroutine(Text2());
+                    }
+                    else if (LineButtom.VButtonFlag)
+                    {
+                        //スタックの中身をリセット
+                        SelectStack.Clear();
+                        SelectStack.Push("ちょ、違う違う！あの曲にティンパニなんか出てこないって いや、どこでそんな風に聴いたのか謎だけど…");
+                        SelectStack.Push("えーっと、あれだよね？あの壮大なストリングスが重なって、ホールで聴くと圧倒されそうな…それにしても、ティンパニの入り方が絶妙だったわ～？");
+                        LineButtom.VButtonFlag = false;
+                        LineButtom.LineBad = true;
+                        StartCoroutine(Text2());
+                    }
+                }
+                else if(number1 == 2)
+                {
+                    SelectStack.Clear();
+                }
+                else if(number1 == 3)
+                {
+                    SelectStack.Clear();
+                }
             }
             else
             {
@@ -84,9 +144,9 @@ public class ManeChanLineChat : MonoBehaviour
                     LineButtom.TextRndFlag = false;
                     LineButtom.SelectTextUIFlag = true;
                 }
-                if(LineButtom.Text1)
+                if (LineButtom.Text1)
                 {
-                    if(LineButtom.FirstText)
+                    if (LineButtom.FirstText)
                     {
                         Debug.Log("テキスト1表示");
                         //スタックの中身をリセット
@@ -108,6 +168,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("えーっ、じゃあ今から予約お願い！全種類食べるからねっ！");
                         Debug.Log("ボタンのフラグがオンになりました:" + LineButtom.XButtonFlag);
                         LineButtom.XButtonFlag = false;
+                        LineButtom.LinePerfect = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.CButtonFlag)
@@ -115,6 +176,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("確かに。じゃあ撮影の後、軽くコンビニでお腹満たしてから行く？");
                         SelectStack.Push("え～おしゃれなカフェって、ちょっと映えはするけど量が少ないのが残念だよね");
                         LineButtom.CButtonFlag = false;
+                        LineButtom.LineNormal = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.VButtonFlag)
@@ -122,10 +184,11 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("ファミレスでも全然いいけど…せっかくのご褒美だし、もう少し贅沢してもいいんじゃない？");
                         SelectStack.Push("うーん…それならファミレスでガッツリパフェ食べたほうがよくない？");
                         LineButtom.VButtonFlag = false;
+                        LineButtom.LineBad = true;
                         StartCoroutine(Text2());
                     }
                 }
-                else if(LineButtom.Text2)
+                else if (LineButtom.Text2)
                 {
                     if (LineButtom.FirstText)
                     {
@@ -147,13 +210,15 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("まぁ、好きなもの使うのが一番だよね。君らしいと思うよ");
                         SelectStack.Push("うーん、ちょっと派手すぎるかなぁ。でも私的にはこのくらい主張強いのも好き！");
                         LineButtom.XButtonFlag = false;
+                        LineButtom.LineNormal = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.CButtonFlag)
                     {
                         SelectStack.Push("大丈夫、また新しいの買えばいいさ！どんどん使おう！");
-                        SelectStack.Push("どうしよう…気に入りすぎて、無くすの怖いからやっぱりやめとこうかな😅");
+                        SelectStack.Push("どうしよう…気に入りすぎて、無くすの怖いからやっぱりやめとこうかな");
                         LineButtom.CButtonFlag = false;
+                        LineButtom.LineBad = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.VButtonFlag)
@@ -161,6 +226,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("もちろん使う！衣装との組み合わせも完璧だから、絶対バッチリ映えると思う！");
                         SelectStack.Push("OK！メイクさんにも伝えておくよ。これは間違いなく映えるね！");
                         LineButtom.VButtonFlag = false;
+                        LineButtom.LinePerfect = true;
                         StartCoroutine(Text2());
                     }
                 }
@@ -186,6 +252,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("うーん…まあ仕方ないけど、少しもったいない気もするな");
                         SelectStack.Push("やっぱり行かない！家でゴロゴロしたいの…");
                         LineButtom.XButtonFlag = false;
+                        LineButtom.LineBad = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.CButtonFlag)
@@ -193,6 +260,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("無理は禁物だからね。楽しめる範囲で参加しよう");
                         SelectStack.Push("ん～行くけど、疲れたら途中で帰ってもいい？");
                         LineButtom.CButtonFlag = false;
+                        LineButtom.LineNormal = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.VButtonFlag)
@@ -200,6 +268,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("それがいい！映えスポットも調べておくから、準備は任せて！");
                         SelectStack.Push("それなら行こうかな！映えを狙って、バッチリ決めていく");
                         LineButtom.VButtonFlag = false;
+                        LineButtom.LinePerfect = true;
                         StartCoroutine(Text2());
                     }
                 }
@@ -225,6 +294,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("まぁ、仕方ないな。来週を楽しみにしておこう！");
                         SelectStack.Push("来週かぁ…まぁ、それでもいいかな。仕方ないよね");
                         LineButtom.XButtonFlag = false;
+                        LineButtom.LineBad = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.CButtonFlag)
@@ -232,6 +302,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("了解！来週は仕事の連絡もなしで、しっかりリフレッシュして");
                         SelectStack.Push("やったー！じゃあ来週は思いっきりのんびりするね～");
                         LineButtom.CButtonFlag = false;
+                        LineButtom.LinePerfect = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.VButtonFlag)
@@ -239,6 +310,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("今週は無理だけど、ごめんね。来週を楽しみにしてて！");
                         SelectStack.Push("え～今週がいいのにー！なんとかしてくれない？");
                         LineButtom.VButtonFlag = false;
+                        LineButtom.LineNormal = true;
                         StartCoroutine(Text2());
                     }
                 }
@@ -264,6 +336,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("いいね！サポートは任せて。きっと盛り上がるよ！");
                         SelectStack.Push("それいいかも！週末に配信やっちゃおうかな");
                         LineButtom.XButtonFlag = false;
+                        LineButtom.LinePerfect = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.CButtonFlag)
@@ -271,6 +344,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("楽な方法も探してみるけど、やっぱり配信が一番だと思う");
                         SelectStack.Push("いや、配信はやりたくない…もっと楽な方法ない？");
                         LineButtom.CButtonFlag = false;
+                        LineButtom.LineBad = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.VButtonFlag)
@@ -278,6 +352,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("まぁ、少し大変だけどやってみる価値はあると思うよ");
                         SelectStack.Push("配信って準備がちょっと面倒なんだよなぁ");
                         LineButtom.VButtonFlag = false;
+                        LineButtom.LineNormal = true;
                         StartCoroutine(Text2());
                     }
                 }
@@ -303,6 +378,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("まぁ、どれを選んでも似合うから安心して！");
                         SelectStack.Push("そっか。でも準備もあるし、別の服にしちゃおうかな");
                         LineButtom.XButtonFlag = false;
+                        LineButtom.LineBad = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.CButtonFlag)
@@ -310,6 +386,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("それだね！映える準備、こっちでしっかり整えておくよ");
                         SelectStack.Push("じゃあこれにする！当日バッチリ決めていくね");
                         LineButtom.CButtonFlag = false;
+                        LineButtom.LinePerfect = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.VButtonFlag)
@@ -317,6 +394,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("もちろん、当日試してから決めても大丈夫だよ");
                         SelectStack.Push("うーん…着てみてから決めてもいい？");
                         LineButtom.VButtonFlag = false;
+                        LineButtom.LineNormal = true;
                         StartCoroutine(Text2());
                     }
                 }
@@ -342,6 +420,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("決まりだね！いい観光地をリストアップしておくよ");
                         SelectStack.Push("海外がいい！映えスポットたくさんあるし、写真もいっぱい撮りたい✈️");
                         LineButtom.XButtonFlag = false;
+                        LineButtom.LinePerfect = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.CButtonFlag)
@@ -349,6 +428,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("そうだよね。温泉とかもいいし、リラックスできる場所探そう");
                         SelectStack.Push("うーん…国内のほうが移動が楽で助かるなぁ");
                         LineButtom.CButtonFlag = false;
+                        LineButtom.LineNormal = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.VButtonFlag)
@@ -356,6 +436,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("まぁ、疲れるのもわかるけど、仕事だし頑張ろうよ」");
                         SelectStack.Push("どっちもパスで。旅行は疲れるから嫌だな");
                         LineButtom.VButtonFlag = false;
+                        LineButtom.LineBad = true;
                         StartCoroutine(Text2());
                     }
                 }
@@ -381,6 +462,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("気持ちはわかるけど、無視するほうが効果的なことも多いんだ");
                         SelectStack.Push("もう嫌だ…全部消してほしい");
                         LineButtom.XButtonFlag = false;
+                        LineButtom.LineBad = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.CButtonFlag)
@@ -388,6 +470,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("その意気だよ！アンチに負けずに進もう");
                         SelectStack.Push("無視するのが一番だよね。私は私のままでいく");
                         LineButtom.CButtonFlag = false;
+                        LineButtom.LinePerfect = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.VButtonFlag)
@@ -395,6 +478,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("まあ、反応するなら冷静にね。感情的になると良くないから");
                         SelectStack.Push("少しくらい反応したほうがいいのかな？");
                         LineButtom.VButtonFlag = false;
+                        LineButtom.LineNormal = true;
                         StartCoroutine(Text2());
                     }
                 }
@@ -420,6 +504,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("レビュー楽しみにしてるよ！絶対似合うと思う");
                         SelectStack.Push("買ってみる！試してみるのが楽しみだな");
                         LineButtom.XButtonFlag = false;
+                        LineButtom.LinePerfect = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.CButtonFlag)
@@ -427,6 +512,7 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("そっか…でも、興味が出たらいつでも試してみて！");
                         SelectStack.Push("うーん、コスメにはあんまり興味ないかも");
                         LineButtom.CButtonFlag = false;
+                        LineButtom.LineBad = true;
                         StartCoroutine(Text2());
                     }
                     else if (LineButtom.VButtonFlag)
@@ -434,42 +520,67 @@ public class ManeChanLineChat : MonoBehaviour
                         SelectStack.Push("まぁ、無理して買わなくてもいいよね");
                         SelectStack.Push("見るだけにしとこうかな…");
                         LineButtom.VButtonFlag = false;
+                        LineButtom.LineNormal = true;
                         StartCoroutine(Text2());
                     }
                 }
-
-
-                if(LineButtom.ButtonOFFFlag)
+            }
+            if (LineButtom.ButtonOFFFlag)
+            {
+                //選択肢を非表示
+                SelectTextUI.SetActive(false);
+            }
+            else
+            {
+                if (LineStack.Count >= 3)  // スタックに最低3つの要素があることを確認
                 {
-                    //選択肢を非表示
-                    SelectTextUI.SetActive(false);
-                }
-                else
-                {
-                    if (LineStack.Count >= 3)  // スタックに最低3つの要素があることを確認
+                    string XButton = LineStack.Pop();
+                    string AButton = LineStack.Pop();
+                    string BButton = LineStack.Pop();
+
+                    // 選択肢を表示
+                    if (TopicSelectFlag)
                     {
-                        string XButton = LineStack.Pop();
-                        string AButton = LineStack.Pop();
-                        string BButton = LineStack.Pop();
-
-                        // 選択肢を表示
-                        if (TopicSelectFlag)
-                        {
-                            TopicSelectFlag = false;
-                            TopicSelect(XButton, 1);
-                            TopicSelect(AButton, 2);
-                            TopicSelect(BButton, 3);
-                        }
-                        else
-                        {
-                            TmpX.text = XButton;
-                            TmpA.text = AButton;
-                            TmpB.text = BButton;
-                        }
-
-                        SelectTextUI.SetActive(true);
+                        TopicSelectFlag = false;
+                        TopicSelect(XButton, 1);
+                        TopicSelect(AButton, 2);
+                        TopicSelect(BButton, 3);
                     }
+                    else
+                    {
+                        TmpX.text = XButton;
+                        TmpA.text = AButton;
+                        TmpB.text = BButton;
+                    }
+
+                    SelectTextUI.SetActive(true);
                 }
+            }
+
+            // 選択肢の評価を表示する
+            if(LineButtom.Evaluation)
+            {
+                EvaluationCanvas.SetActive(true);
+                Image EvaluationImageComponent = EvaluationImage.GetComponent<Image>();
+                if (LineButtom.LinePerfect)
+                {
+                    EvaluationText.text = "パーフェクト";
+                    EvaluationImageComponent.color = new Color(240f / 255f, 255f / 255f, 110f / 255f);
+                    LineButtom.LinePerfect = false;
+                }
+                else if(LineButtom.LineNormal)
+                {
+                    EvaluationText.text = "ノーマル";
+                    EvaluationImageComponent.color = new Color(180f / 255f, 240f / 255f, 170f / 255f);
+                    LineButtom.LineNormal = false;
+                }
+                else if(LineButtom.LineBad)
+                {
+                    EvaluationText.text = "バッド";
+                    EvaluationImageComponent.color = new Color(100f / 255f, 200f / 255f, 250f / 255f);
+                    LineButtom.LineBad = false;
+                }
+                LineButtom.Evaluation = false;
             }
         }
     }
@@ -528,6 +639,7 @@ public class ManeChanLineChat : MonoBehaviour
         }
     }
 
+    // 一回目のテキスト表示
     private IEnumerator Text()
     {
         LineText = SelectStack.Pop();
@@ -555,6 +667,7 @@ public class ManeChanLineChat : MonoBehaviour
 
         LineButtom.ButtonOFFFlag = false;
     }
+    // 二回目のテキスト表示
     private IEnumerator Text2()
     {
         
@@ -581,8 +694,19 @@ public class ManeChanLineChat : MonoBehaviour
         contentManager.AddToLeftText(LineText);
         ScrollManager.scrollValueUp();
 
+        yield return new WaitForSeconds(1f);
+        // 選択肢の評価関連
+        LineButtom.Evaluation = true;
+        yield return new WaitForSeconds(3f);
+        EvaluationCanvas.SetActive(false);
+
         LineButtom.TextRndFlag = true;
         LineButtom.ButtonOFFFlag = false;
+        if(Notice.ManeLineTaskFlagON)
+        {
+            Notice.ManeLineTaskFlagON = false;
+            Notice.FirstTaskText = true;
+        }
         FlagOFF();
     }
 

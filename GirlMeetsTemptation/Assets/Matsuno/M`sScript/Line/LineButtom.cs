@@ -55,6 +55,14 @@ public class LineButtom : MonoBehaviour
     private InputAction LineA;
     private InputAction LineB;
     private InputAction LineY;
+
+    // line‚Ì•]‰¿‚ÌUI‚Æƒtƒ‰ƒO
+    [SerializeField] GameObject EvaluationUI;
+    public static bool LinePerfect = false;
+    public static bool LineNormal = false;
+    public static bool LineBad = false;
+    public static bool Evaluation = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,6 +117,11 @@ public class LineButtom : MonoBehaviour
                 ManeChanTalk.SetActive(false);
                 Tomodati1Talk.SetActive(false);
                 Tomodati2Talk.SetActive(false);
+                EvaluationUI.SetActive(false);
+                LinePerfect = false;
+                LineNormal = false;
+                LineBad = false;
+                Evaluation = false;
                 Text1 = false;
                 Text2 = false;
                 Text3 = false;
