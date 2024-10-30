@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class Timelimit : MonoBehaviour
 {
     //カウントダウン
     public float countdown;
     public Image nizigauge;
+    public TextMeshProUGUI gaugeText;
     private float gaugeDuration = 20f;  // ゲージが増加する時間
     public Image tempgauge;
     public Material customSkyboxMaterial; // InspectorでセットできるカスタムSkyBox用のマテリアル
@@ -66,16 +67,14 @@ public class Timelimit : MonoBehaviour
             // プレイヤーが「phoneOff」のときゲージは増加する
             gaugeDuration += Time.deltaTime;
         }
-        //狂乱
-        if(tempgauge.fillAmount == 1){
-            nizigauge.gameObject.SetActive(true);
-        }
 
         // ゲージの値を範囲内に制限する
         gaugeDuration = Mathf.Clamp(gaugeDuration, 0, 40);
 
         // ゲージのfillAmountを更新
         tempgauge.fillAmount = Mathf.Clamp01(gaugeDuration / 40f);
+        float num = tempgauge.fillAmount * 100;
+        gaugeText.text = num.ToString("F0");
         }
     }
     private IEnumerator EndGameAfterDelay(float delay)

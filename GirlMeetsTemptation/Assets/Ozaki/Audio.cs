@@ -41,7 +41,7 @@ public class Audio : MonoBehaviour
     // サウンドを再生するメソッド
     public void PlaySound(int index){
 
-        if ((index == 0 || index == 6) && index >= 0 && index < SE.Length){
+        if ((index == 0 || index == 6 || index == 7 || index == 8 || index == 9 || index == 10 || index == 11) && index >= 0 && index < SE.Length){
             // SE[0] をループ再生する
             bgmSource.clip = SE[index];
             bgmSource.loop = true;
