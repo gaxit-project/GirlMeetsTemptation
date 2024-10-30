@@ -6,7 +6,7 @@ using TMPro;
 public class Timelimit : MonoBehaviour
 {
     //カウントダウン
-    public float countdown;
+    //public float countdown;
     public Image nizigauge;
     public TextMeshProUGUI gaugeText;
     private float gaugeDuration = 20f;  // ゲージが増加する時間
@@ -28,11 +28,11 @@ public class Timelimit : MonoBehaviour
     }
     void Update()
     {
-        Timelimits();
+        //Timelimits();
         UpdateGauge();
     }
 
-    private void Timelimits(){
+    /*private void Timelimits(){
         //時間をカウントダウンする
         countdown -= Time.deltaTime;
  
@@ -48,7 +48,7 @@ public class Timelimit : MonoBehaviour
             GameOver.SetMessage("時間が切れて死んだ");
             Scene.GetInstance().EndGame();
         }
-    }
+    }*/
 
     private void UpdateGauge()
     {

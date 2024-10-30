@@ -99,10 +99,10 @@ public class PlaneScript : MonoBehaviour
         nextStage = 3;
         }
         }else{
-        if (rand < 0.30f) // 30% の確率で stagenum[0]
+        if (rand < 0.20f) // 20% の確率で stagenum[0]
         {
         nextStage = 0;
-        }else if (rand < 0.50f) // 20% の確率で stagenum[1]
+        }else if (rand < 0.50f) // 30% の確率で stagenum[1]
         {
         nextStage = 1;
         }else if (rand < 0.90f) // 40% の確率で stagenum[2]

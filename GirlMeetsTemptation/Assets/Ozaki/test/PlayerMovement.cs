@@ -55,11 +55,24 @@ public class PlayerMovement : MonoBehaviour
             // 前進
             transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
             if(walk){
+            if (!Audio.GetInstance().IsPlayingSound(0) && 
+            !Audio.GetInstance().IsPlayingSound(7) && 
+            !Audio.GetInstance().IsPlayingSound(8) && 
+            !Audio.GetInstance().IsPlayingSound(9) && 
+            !Audio.GetInstance().IsPlayingSound(10) && 
+            !Audio.GetInstance().IsPlayingSound(11))
+            {
                 Audio.GetInstance().PlaySound(0);
+            }
                 walk = false;
             }
         }else{
-            Audio.GetInstance().StopLoopSound(); 
+            if (Audio.GetInstance().IsPlayingSound(0))
+            {
+                Audio.GetInstance().StopLoopSound();
+                Audio.GetInstance().PlaySound(12);
+            }
+            
             walk = true;
         }
         // 左への移動

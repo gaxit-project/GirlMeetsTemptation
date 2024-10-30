@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2327,7 +2327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &164476766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2689,7 +2689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &212698156
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3015,7 +3015,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScript: {fileID: 257928155}
+  ButtonManager: {fileID: 548857608}
   toggleButton: {fileID: 897000235}
+  phoneBut:
+  - {fileID: 897000235}
+  - {fileID: 1435292055}
+  - {fileID: 115747544}
+  - {fileID: 88910556}
 --- !u!1 &268870866
 GameObject:
   m_ObjectHideFlags: 0
@@ -4314,7 +4320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &548857608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6021,11 +6027,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!4 &799357014 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4058200767122284, guid: 00e7b4e088847b641bdda538450547db, type: 3}
-  m_PrefabInstance: {fileID: 1614325260}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &799357015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6056,6 +6057,11 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!4 &799357018 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4058200767122284, guid: 00e7b4e088847b641bdda538450547db, type: 3}
+  m_PrefabInstance: {fileID: 1614325260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &801037950
 GameObject:
   m_ObjectHideFlags: 0
@@ -7691,7 +7697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd77db643f41fc24794ec59d1808485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdown: 100
   nizigauge: {fileID: 275613769}
   gaugeText: {fileID: 514888135}
   tempgauge: {fileID: 161067557}
@@ -9729,7 +9734,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 799357014}
+  m_Father: {fileID: 799357018}
   m_LocalEulerAnglesHint: {x: 55, y: 0.621, z: 0.003}
 --- !u!45 &1267495425
 Skybox:
@@ -12648,6 +12653,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 69a0328c22b50714ba20305d89867358, type: 3}
   - {fileID: 8300000, guid: 1420ca9fe7b848849b6c4db90114ec5e, type: 3}
   - {fileID: 8300000, guid: 6825652d68086714a9e929fbdb6dc2a0, type: 3}
+  - {fileID: 8300000, guid: 4012d753e0a593f4685f489bb193ea0e, type: 3}
+  upButton: {fileID: 101609386}
+  downButton: {fileID: 139956825}
 --- !u!4 &1707144494
 Transform:
   m_ObjectHideFlags: 0
@@ -14615,14 +14623,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcbbd842070fe1948bf9dd1b3ebfed7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 799357014}
+  Target: {fileID: 799357018}
   stagenum:
   - {fileID: 5631680600301392931, guid: 0d0a5f655e97b0343947176c7b225061, type: 3}
   - {fileID: 6475030808448374611, guid: ba3136939dfd05f41bd2f43cf4988b07, type: 3}
   - {fileID: 6477963767702881855, guid: c07502a41ed5dab4389fe71650030a1e, type: 3}
   - {fileID: 372710878001306611, guid: cc22d14f9896946418ad3ae283984ba2, type: 3}
   finalStagePrefab: {fileID: 6871275097401086919, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
-  totalStages: 4
+  totalStages: 20
   StageList:
   - {fileID: 1866142632}
 --- !u!4 &2069484619

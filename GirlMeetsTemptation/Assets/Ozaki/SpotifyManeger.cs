@@ -33,14 +33,14 @@ public class SpotifyManager : MonoBehaviour
             buttonArray[i].onClick.AddListener(() => action(index));
         }
     }
-    private void ADDSetUpButtons(Button[] buttonArray, UnityEngine.Events.UnityAction<int> action)
+    /*private void ADDSetUpButtons(Button[] buttonArray, UnityEngine.Events.UnityAction<int> action)
     {
         for (int i = 0; i < buttonArray.Length; i++)
         {
             int index = i; // クロージャ問題を防ぐためのローカルコピー
             buttonArray[i].onClick.AddListener(() => action(index));
         }
-    }
+    }*/
     private void UpdateButtonSelection()
     {
         // 現在表示されているボタンを取得
@@ -52,7 +52,9 @@ public class SpotifyManager : MonoBehaviour
             ColorBlock buttonColors = buttons[i].colors;
             buttonColors.normalColor = (i == selectedIndex && !soundActive) ? Color.yellow : Color.white;
             buttons[i].colors = buttonColors;
-
+        }
+        for (int i = 0; i < stopbuttons.Length; i++)
+        {
             ColorBlock stopButtonColors = stopbuttons[i].colors;
             stopButtonColors.normalColor = (i == selectedIndex && soundActive) ? Color.yellow : Color.white;
             stopbuttons[i].colors = stopButtonColors;
@@ -95,13 +97,17 @@ public class SpotifyManager : MonoBehaviour
         // ボタンの表示・非表示を制御
         if (showButtons)
         {
+            if(index <=3){
             buttons[index].gameObject.SetActive(true);
             stopbuttons[index].gameObject.SetActive(false);
+            }
         }
         else
         {
+            if(index <=3){
             buttons[index].gameObject.SetActive(false);
             stopbuttons[index].gameObject.SetActive(true);
+            }
         }
     }
 
@@ -126,6 +132,11 @@ public class SpotifyManager : MonoBehaviour
             }
             // 下キーで下のボタンを選択
             else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                selectedIndex = (selectedIndex < currentButtons.Length - 1) ? selectedIndex + 1 : 0;
+                UpdateButtonSelection();
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 selectedIndex = (selectedIndex < currentButtons.Length - 1) ? selectedIndex + 1 : 0;
                 UpdateButtonSelection();
