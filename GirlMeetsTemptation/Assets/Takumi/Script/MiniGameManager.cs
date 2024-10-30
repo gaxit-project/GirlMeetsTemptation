@@ -16,6 +16,8 @@ public class MiniGameManager : MonoBehaviour
     public GameObject MiniGame;
     //ミニゲームUI
     public GameObject MiniGameUI;
+    //ミニゲームUI
+    public GameObject MainPhoneUI;
     //ミニゲームMap
     public MapGen MapGen;
 
@@ -45,19 +47,25 @@ public class MiniGameManager : MonoBehaviour
     {
         if (isOpen)
         {
+            PhoneRote(isOpen);
             MiniGame.SetActive(isOpen);
             MiniGameUI.SetActive(isOpen);
             MapGen.InitMapGen();
         }
         else
         {
+            PhoneRote(isOpen);
             isStart = false;
+            MapDestroy();
             MiniGame.SetActive(isOpen);
             MiniGameUI.SetActive(isOpen);
         }
 
+        Debug.Log("isOpen : " + isOpen);
+        Debug.Log("isStart : " + isStart);
+
         //デバッグ用
-        if(Input.GetKeyDown("k"))
+        if (Input.GetKeyDown("k"))
         {
             if (isOpen)
             {
@@ -78,6 +86,51 @@ public class MiniGameManager : MonoBehaviour
             {
                 isStart = true;
             }
+        }
+    }
+
+    void PhoneRote(bool game)
+    {
+        if (game)
+        {
+            MainPhoneUI.transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+        else
+        {
+            MainPhoneUI.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+    }
+    void MapDestroy()
+    {
+        GameObject[] Top = GameObject.FindGameObjectsWithTag("Top");
+        foreach (GameObject top in Top)
+        {
+            Destroy(top);
+        }
+        GameObject[] Mid = GameObject.FindGameObjectsWithTag("Mid");
+        foreach (GameObject mid in Mid)
+        {
+            Destroy(mid);
+        }
+        GameObject[] Bot = GameObject.FindGameObjectsWithTag("Bot");
+        foreach (GameObject bot in Bot)
+        {
+            Destroy(bot);
+        }
+        GameObject[] Human = GameObject.FindGameObjectsWithTag("Human");
+        foreach (GameObject human in Human)
+        {
+            Destroy(human);
+        }
+        GameObject[] Car = GameObject.FindGameObjectsWithTag("Car");
+        foreach (GameObject car in Car)
+        {
+            Destroy(car);
+        }
+        GameObject[] Meteo = GameObject.FindGameObjectsWithTag("Meteo");
+        foreach (GameObject meteo in Meteo)
+        {
+            Destroy(meteo);
         }
     }
 }

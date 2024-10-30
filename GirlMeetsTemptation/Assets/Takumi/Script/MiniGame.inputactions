@@ -285,11 +285,33 @@
                 },
                 {
                     "name": "",
+                    "id": "3858cf56-0d45-4966-b323-67cc29330bbf",
+                    "path": "<XInputController>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MiniGameJump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "927a903f-fac3-4d19-8afa-10b2e7f02397",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "miniGameFall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4486f31e-ff83-46e8-9452-589cedf1290a",
+                    "path": "<XInputController>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "miniGameFall",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -20,7 +20,11 @@ public class MapGen : MonoBehaviour
 
     [Header("生成単位")]
     public int Chunk;
-    public int StartPos = 100;
+    public int StartPos = 132;
+
+    [Header("プレイヤー")]
+    public GameObject PlayerObj;
+    public GameObject CameraObj;
 
     private int i;
     private float time;
@@ -29,19 +33,14 @@ public class MapGen : MonoBehaviour
 
     void OnEnable()
     {
-        InitMapGen();
-        if (!MiniGameManager.islunatic && MiniGameManager.isStart && MiniGameManager.isOpen)
+        StartPos = 132;
+        MiniGameManager.MiniDeathID = 0;
+        for(i = 88; i <= 132; i+= 2)
         {
-            MeteoBarn();
+            StartMapGen(i);
         }
-    }
-    void Start()
-    {
-        InitMapGen();
-        if(!MiniGameManager.islunatic && MiniGameManager.isStart && MiniGameManager.isOpen)
-        {
-            MeteoBarn();
-        }
+        PlayerObj.transform.position = new Vector3(100, 0, 0);
+        CameraObj.transform.position = new Vector3(100, 3.5f, -18.56f);
     }
 
     void Update()
@@ -60,6 +59,13 @@ public class MapGen : MonoBehaviour
             }
         }
         Debug.Log("StartPos : " + StartPos);
+
+        if (Input.GetKeyDown("u")){
+            Instantiate(TopObj, new Vector3(StartPos, TopPos.position.y, 0f), Quaternion.identity);
+            Instantiate(MidObj, new Vector3(StartPos, MidPos.position.y, 0f), Quaternion.identity);
+            Instantiate(BotObj, new Vector3(StartPos, BotPos.position.y, 0f), Quaternion.identity);
+            StartPos += 2;
+        }
         
     }
 
@@ -72,6 +78,13 @@ public class MapGen : MonoBehaviour
             Instantiate(BotObj, new Vector3(i, BotPos.position.y, 0f), Quaternion.identity);
             Debug.Log("生成ーーーー");
         }
+    }
+
+    public void StartMapGen(int st)
+    {
+        Instantiate(TopObj, new Vector3(st, TopPos.position.y, 0f), Quaternion.identity);
+        Instantiate(MidObj, new Vector3(st, MidPos.position.y, 0f), Quaternion.identity);
+        Instantiate(BotObj, new Vector3(st, BotPos.position.y, 0f), Quaternion.identity);
     }
 
     public void CreateMap()

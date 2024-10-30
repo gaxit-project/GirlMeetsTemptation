@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GamePlayer : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class GamePlayer : MonoBehaviour
     public Animator animator;
     public Rigidbody rb;
     public Collider playerCol;
+    private InputAction MiniJumpAction;
+    private InputAction MiniFallAction;
 
     [Header("移動設定")]
     public float speed;
@@ -18,6 +21,8 @@ public class GamePlayer : MonoBehaviour
     [Header("プレイヤー設定")]
     bool isFall = false;
     float time = 0f;
+    public bool jump;
+    public bool fall;
 
 
     //床のcollider
@@ -26,11 +31,16 @@ public class GamePlayer : MonoBehaviour
 
     void Start()
     {
-        
+        var pInput = GetComponent<PlayerInput>();
+        var actionMap = pInput.currentActionMap;
+        MiniJumpAction = actionMap["MiniGameJump"];
+        MiniFallAction = actionMap["miniGameFall"];
     }
 
     void Update()
     {
+        bool jump = MiniJumpAction.triggered;
+        bool fall = MiniFallAction.triggered;
         // X方向に自動で進む
         //Vector3 move = new Vector3(speed, rb.velocity.y, rb.velocity.z); // 常にspeedの値でX方向に進む
         //rb.velocity = new Vector3(rb.velocity.x * speed, rb.velocity.y, rb.velocity.z); // 速度を設定
@@ -55,7 +65,7 @@ public class GamePlayer : MonoBehaviour
         //animator.SetFloat("speed", playerSpeed);
 
         // ジャンプ
-        if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+        if (jump && isGrounded)
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
             isGrounded = false; // ジャンプ中は地面にいないとみなす
@@ -85,7 +95,7 @@ public class GamePlayer : MonoBehaviour
         if (col.gameObject.CompareTag("Mid") || col.gameObject.CompareTag("Top"))
         {
             floorCol = col.gameObject.GetComponent<Collider>();
-            if (Input.GetKeyDown("s"))
+            if (fall)
             {
                 // 衝突を一時的に無効にする
                 playerCol.enabled = false; ;
@@ -142,7 +152,7 @@ public class GamePlayer : MonoBehaviour
         if (col.gameObject.CompareTag("Mid") || col.gameObject.CompareTag("Top"))
         {
             floorCol = col.gameObject.GetComponent<Collider>();
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (fall)
             {
                 // 衝突を一時的に無効にする
                 playerCol.enabled = false;
