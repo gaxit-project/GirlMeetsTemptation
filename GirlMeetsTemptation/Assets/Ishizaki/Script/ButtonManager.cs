@@ -6,6 +6,9 @@ public class ButtonManager : MonoBehaviour
 {
     public static bool TwiXFlag = false;
     public static bool TwiXFirstFlag = false;
+    public static bool GMapFlag = false;
+    public static bool GMapFirstFlag = false;
+    [SerializeField] GameObject GMapUI;
     [SerializeField] GameObject LineObject;
     public void ClickButton(string button)
     {
@@ -19,6 +22,9 @@ public class ButtonManager : MonoBehaviour
                 break;
             case "Twitter":
                 Debug.Log(button + "Ç™âüÇ≥ÇÍÇΩÅI");
+                GMapFlag = true;
+                GMapFirstFlag = true;
+                GMapUI.SetActive(true);
                 break;
             case "Game":
                 Debug.Log(button + "Ç™âüÇ≥ÇÍÇΩÅI");

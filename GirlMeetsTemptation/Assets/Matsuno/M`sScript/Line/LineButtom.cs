@@ -63,6 +63,8 @@ public class LineButtom : MonoBehaviour
     public static bool LineBad = false;
     public static bool Evaluation = false;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,23 +80,10 @@ public class LineButtom : MonoBehaviour
             PhoneLineUI.SetActive(false);
         }
 
-        var pInput = GetComponent<PlayerInput>();
-        var actionMap = pInput.currentActionMap;
-        LineX = actionMap["LineSelectX"];
-        LineA = actionMap["LineSelectA"];
-        LineB = actionMap["LineSelectB"];
-        LineY = actionMap["LineBackY"];
-
     }
 
     private void Update()
     {
-        var pInput = GetComponent<PlayerInput>();
-        var actionMap = pInput.currentActionMap;
-        LineX = actionMap["LineSelectX"];
-        LineA = actionMap["LineSelectA"];
-        LineB = actionMap["LineSelectB"];
-        LineY = actionMap["LineBackY"];
         if (ButtonManager.TwiXFlag)
         {
             if (ButtonManager.TwiXFirstFlag)
@@ -104,6 +93,13 @@ public class LineButtom : MonoBehaviour
                 PhoneLineUI.SetActive(true);
                 Karepi.Select();
                 ButtonManager.TwiXFirstFlag = false;
+                var pInput = GetComponent<PlayerInput>();
+                var actionMap = pInput.currentActionMap;
+                LineX = actionMap["LineSelectX"];
+                LineA = actionMap["LineSelectA"];
+                LineB = actionMap["LineSelectB"];
+                LineY = actionMap["LineBackY"];
+                ShowObject();
             }
         }
         //戻る
@@ -283,6 +279,24 @@ public class LineButtom : MonoBehaviour
             Debug.Log("フラグオン9！" + Text9);
         }
     }
+
+
+    // 表示する際に呼び出される関数
+    public void ShowObject()
+    {
+        // InputActionの有効化
+        LineX.Enable();
+        LineA.Enable();
+        LineB.Enable();
+        LineY.Enable();
+        var pInput = GetComponent<PlayerInput>();
+        var actionMap = pInput.currentActionMap;
+        LineX = actionMap["LineSelectX"];
+        LineA = actionMap["LineSelectA"];
+        LineB = actionMap["LineSelectB"];
+        LineY = actionMap["LineBackY"];
+    }
+
 
     //ラインのボタン
 
