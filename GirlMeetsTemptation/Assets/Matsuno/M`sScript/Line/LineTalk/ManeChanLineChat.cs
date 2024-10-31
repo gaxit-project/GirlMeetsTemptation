@@ -29,7 +29,7 @@ public class ManeChanLineChat : MonoBehaviour
     [SerializeField] GameObject EvaluationImage;
     [SerializeField] TextMeshProUGUI EvaluationText;
 
-
+    public FameManager FMManeger;
 
     private void Start()
     {
@@ -566,18 +566,21 @@ public class ManeChanLineChat : MonoBehaviour
                 {
                     EvaluationText.text = "パーフェクト";
                     EvaluationImageComponent.color = new Color(240f / 255f, 255f / 255f, 110f / 255f);
+                    FMManeger.UpFgauge(5);
                     LineButtom.LinePerfect = false;
                 }
                 else if(LineButtom.LineNormal)
                 {
                     EvaluationText.text = "ノーマル";
                     EvaluationImageComponent.color = new Color(180f / 255f, 240f / 255f, 170f / 255f);
+                    FMManeger.UpFgauge(3);
                     LineButtom.LineNormal = false;
                 }
                 else if(LineButtom.LineBad)
                 {
                     EvaluationText.text = "バッド";
                     EvaluationImageComponent.color = new Color(100f / 255f, 200f / 255f, 250f / 255f);
+                    FMManeger.DownFgauge(5);
                     LineButtom.LineBad = false;
                 }
                 LineButtom.Evaluation = false;

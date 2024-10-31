@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.Composites;
 
 public class LineButtom : MonoBehaviour
 {
-    
+    [SerializeField] GameObject LineSystemUI;
     // ラインの友達のボタン関連
     public Button Karepi;
     public Button Oshi;
@@ -89,7 +89,12 @@ public class LineButtom : MonoBehaviour
 
     private void Update()
     {
-
+        var pInput = GetComponent<PlayerInput>();
+        var actionMap = pInput.currentActionMap;
+        LineX = actionMap["LineSelectX"];
+        LineA = actionMap["LineSelectA"];
+        LineB = actionMap["LineSelectB"];
+        LineY = actionMap["LineBackY"];
         if (ButtonManager.TwiXFlag)
         {
             if (ButtonManager.TwiXFirstFlag)
@@ -197,6 +202,7 @@ public class LineButtom : MonoBehaviour
             bool LineButtonY = LineY.triggered;
             if (Input.GetKey(KeyCode.Z) || LineButtonY)
             {
+                LineSystemUI.SetActive(false);
                 Debug.Log("こんちくわんこひひ");
                 TalkHome.SetActive(false);
                 PhoneLineUI.SetActive(false);

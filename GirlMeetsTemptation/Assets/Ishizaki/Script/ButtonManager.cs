@@ -6,6 +6,7 @@ public class ButtonManager : MonoBehaviour
 {
     public static bool TwiXFlag = false;
     public static bool TwiXFirstFlag = false;
+    [SerializeField] GameObject LineObject;
     public void ClickButton(string button)
     {
         switch (button)
@@ -14,6 +15,7 @@ public class ButtonManager : MonoBehaviour
                 Debug.Log(button + "‚ª‰Ÿ‚³‚ê‚½I");
                 TwiXFlag = true;
                 TwiXFirstFlag = true;
+                LineObject.SetActive(true);
                 break;
             case "Twitter":
                 Debug.Log(button + "‚ª‰Ÿ‚³‚ê‚½I");
