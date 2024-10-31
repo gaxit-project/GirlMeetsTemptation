@@ -75,7 +75,7 @@ public class PlaneScript : MonoBehaviour
         if (index == FirstStageIndex + totalStages - 1)
         {
             FinalStage = true;
-            return Instantiate(finalStagePrefab, new Vector3(0.96f, 9.73f, index * StageSize), Quaternion.identity);
+            return Instantiate(finalStagePrefab, new Vector3(9.7f, 11.742f, /*58.94f*/index * StageSize-1), Quaternion.identity);
         }
 
         int nextStage/* = Random.Range(0, stagenum.Length)*/;

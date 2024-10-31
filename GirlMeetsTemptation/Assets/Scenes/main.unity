@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2361,7 +2361,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 92f86de7b2fdc3a4cbbd56a50a11c655, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38b921f5153c711448e52ddc9bab1a36, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6310,7 +6310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87d9139ba2c44147957e784d8a7dd04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 5
   playcamera: {fileID: 1267495422}
   phoneUI: {fileID: 1580546052}
 --- !u!65 &799357010
@@ -15089,7 +15089,7 @@ MonoBehaviour:
   - {fileID: 6475030808448374611, guid: ba3136939dfd05f41bd2f43cf4988b07, type: 3}
   - {fileID: 6477963767702881855, guid: c07502a41ed5dab4389fe71650030a1e, type: 3}
   - {fileID: 372710878001306611, guid: cc22d14f9896946418ad3ae283984ba2, type: 3}
-  finalStagePrefab: {fileID: 6871275097401086919, guid: ada99037e10f32b4ba1831602f962a15, type: 3}
+  finalStagePrefab: {fileID: 8066280751613141708, guid: fdb833b60409abc439a6a04a1bee9ec3, type: 3}
   totalStages: 20
   StageList:
   - {fileID: 1866142632}
