@@ -51,12 +51,12 @@ public class Tomodati1LineChat : MonoBehaviour
             //ラインタスクがオンになったとき
             if (Notice.Tomodati1TaskFlagON)
             {
+                Debug.Log("友達タスクON！");
                 int HumanTime = Map.Timer;
                 int CarTime = Map.CarTimer;
-                int number1 = Notice.NoticeCnt;
-                Debug.Log("ラインタスクのフラグ:" + number1);
-                if (number1 == 2)
+                if (!Notice.Task1)
                 {
+                    Debug.Log("タスク1実行！！！");
                     if (Notice.FirstTaskText)
                     {
                         contentManager.AddToLeftText("あとどれくらいで付きそう？めっちゃ待ってるんだけど");
@@ -80,6 +80,7 @@ public class Tomodati1LineChat : MonoBehaviour
                         LineButtom.LinePerfect = true;
                         LineButtom.XButtonFlag = false;
                         StartCoroutine(Text2());
+                        Notice.Task1 = true;
                     }
                     else if (LineButtom.CButtonFlag)
                     {
@@ -90,6 +91,7 @@ public class Tomodati1LineChat : MonoBehaviour
                         LineButtom.CButtonFlag = false;
                         LineButtom.LineBad = true;
                         StartCoroutine(Text2());
+                        Notice.Task1 = true;
                     }
                     else if (LineButtom.VButtonFlag)
                     {
@@ -100,15 +102,59 @@ public class Tomodati1LineChat : MonoBehaviour
                         LineButtom.VButtonFlag = false;
                         LineButtom.LineNormal = true;
                         StartCoroutine(Text2());
+                        Notice.Task1 = true;
                     }
                 }
-                else if (number1 == 5)
+                else if (!Notice.Task2)
                 {
-                    SelectStack.Clear();
-                }
-                else if (number1 == 6)
-                {
-                    SelectStack.Clear();
+                    Debug.Log("タスク2実行！！！");
+                    if (Notice.FirstTaskText)
+                    {
+                        contentManager.AddToLeftText("最近よく見てる切り抜きチャンネルがあるんだけどそのチャンネルのエンディングに使われてる「ワンダーランド」って曲めっちゃチルくていいよ！");
+                        ScrollManager.scrollValueUp();
+                        // 選択肢のスタックの準備
+                        LineStack.Clear();
+                        LineStack.Push("和楽器\nいいよね");
+                        LineStack.Push("ボーカルが\n入るとは...");
+                        LineStack.Push("序盤\nめちゃいい");
+                        LineButtom.SelectTextUIFlag = true;
+                        Notice.FirstTaskText = false;
+                    }
+
+                    if (LineButtom.XButtonFlag)
+                    {
+                        //スタックの中身をリセット
+                        SelectStack.Clear();
+                        SelectStack.Push("わかる～！もう私ずっと「てってーてれてててれれ」って頭の中で無限再生されてるもん！");
+                        SelectStack.Push("序盤のチルめの感じから音が大集合してくのめっちゃアゲって感じでいいよね！");
+                        Debug.Log("ボタンのフラグがオンになりました:" + LineButtom.XButtonFlag);
+                        LineButtom.LineNormal = true;
+                        LineButtom.XButtonFlag = false;
+                        StartCoroutine(Text2());
+                        Notice.Task1 = true;
+                    }
+                    else if (LineButtom.CButtonFlag)
+                    {
+                        //スタックの中身をリセット
+                        SelectStack.Clear();
+                        SelectStack.Push("私も最初はびっくりしたけど歌詞も曲調も胸にじわっと来る感じめちゃいいよね！");
+                        SelectStack.Push("BGMが続くと思ってたんだけどいきなり歌声入ってきてびっくりした！だけどめちゃいい曲！");
+                        LineButtom.CButtonFlag = false;
+                        LineButtom.LinePerfect = true;
+                        StartCoroutine(Text2());
+                        Notice.Task1 = true;
+                    }
+                    else if (LineButtom.VButtonFlag)
+                    {
+                        //スタックの中身をリセット
+                        SelectStack.Clear();
+                        SelectStack.Push("あんたが何言ってるかはわかんないけど何も聴いてないのは分かったよ");
+                        SelectStack.Push("やっぱりあの和楽器特融の雰囲気というかチルさというか...ああいう雰囲気言葉にいい表しずらいけどいいよね");
+                        LineButtom.VButtonFlag = false;
+                        LineButtom.LineBad = true;
+                        StartCoroutine(Text2());
+                        Notice.Task1 = true;
+                    }
                 }
             }
             else
@@ -597,7 +643,7 @@ public class Tomodati1LineChat : MonoBehaviour
         }
         else if (ButtonNumber == "2")
         {
-            TopicSelectText = "どうリフレッシュしてる";
+            TopicSelectText = "リフレッシュの仕方";
         }
         else if (ButtonNumber == "3")
         {

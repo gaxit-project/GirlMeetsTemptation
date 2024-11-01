@@ -120,7 +120,10 @@ public class PlayerMovement : MonoBehaviour
             phoneUI.SetActive(false);
             MiniGameManager.isStart = false;
             MiniGameManager.isOpen = false;
-            PhoneONTaskFlag = true;
+            if(!ButtonManager.TwiXFlag)
+            {
+                PhoneONTaskFlag = true;
+            }
         }
     }
 

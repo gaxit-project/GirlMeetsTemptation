@@ -51,13 +51,11 @@ public class ManeChanLineChat : MonoBehaviour
             //ラインタスクがオンになったとき
             if (Notice.ManeLineTaskFlagON)
             {
-                int number1 = Notice.NoticeCnt;
-                Debug.Log("ラインタスクのフラグ:" + number1);
-                if(number1 == 1)
+                if(!Notice.Task3)
                 {
                     if(Notice.FirstTaskText)
                     {
-                        contentManager.AddToLeftText("魔王魂さんの「アジトへの道」っていう曲がめちゃめちゃいいの！時間あるときにでも気分転換に聴いて！");
+                        contentManager.AddToLeftText("森田交一さんの「アジトへの道」っていう曲がめちゃめちゃいいの！時間あるときにでも気分転換に聴いて！");
                         ScrollManager.scrollValueUp();
                         // 選択肢のスタックの準備
                         LineStack.Clear();
@@ -78,6 +76,7 @@ public class ManeChanLineChat : MonoBehaviour
                         LineButtom.LineNormal = true;
                         LineButtom.XButtonFlag = false;
                         StartCoroutine(Text2());
+                        Notice.Task3 = true;
                     }
                     else if (LineButtom.CButtonFlag)
                     {
@@ -88,6 +87,7 @@ public class ManeChanLineChat : MonoBehaviour
                         LineButtom.CButtonFlag = false;
                         LineButtom.LinePerfect = true;
                         StartCoroutine(Text2());
+                        Notice.Task3 = true;
                     }
                     else if (LineButtom.VButtonFlag)
                     {
@@ -98,15 +98,58 @@ public class ManeChanLineChat : MonoBehaviour
                         LineButtom.VButtonFlag = false;
                         LineButtom.LineBad = true;
                         StartCoroutine(Text2());
+                        Notice.Task3 = true;
                     }
                 }
-                else if(number1 == 5)
+                else if(!Notice.Task4)
                 {
-                    SelectStack.Clear();
-                }
-                else if(number1 == 6)
-                {
-                    SelectStack.Clear();
+                    if (Notice.FirstTaskText)
+                    {
+                        contentManager.AddToLeftText("企業からの案件が今来て〇〇っていうゲームを紹介する必要があるから１回どんなゲームか実際に遊んでみて～！");
+                        ScrollManager.scrollValueUp();
+                        // 選択肢のスタックの準備
+                        LineStack.Clear();
+                        LineStack.Push("敵を避ける\nやつ");
+                        LineStack.Push("鏡の世界");
+                        LineStack.Push("炎消すやつ");
+                        LineButtom.SelectTextUIFlag = true;
+                        Notice.FirstTaskText = false;
+                    }
+
+                    if (LineButtom.XButtonFlag)
+                    {
+                        //スタックの中身をリセット
+                        SelectStack.Clear();
+                        SelectStack.Push("いや全然別物だから！それ「カジバカ！」だから！");
+                        SelectStack.Push("あれだよね！自分が消防隊になって燃え盛ってる家事現場から炎を消火して人を10人以上救う東京ゲームショウにも展示されたゲームだよね！");
+                        Debug.Log("ボタンのフラグがオンになりました:" + LineButtom.XButtonFlag);
+                        LineButtom.LineNormal = true;
+                        LineButtom.XButtonFlag = false;
+                        StartCoroutine(Text2());
+                        Notice.Task4 = true;
+                    }
+                    else if (LineButtom.CButtonFlag)
+                    {
+                        //スタックの中身をリセット
+                        SelectStack.Clear();
+                        SelectStack.Push("いや全然別物だから！それ「鏡子」だから！");
+                        SelectStack.Push("あれだよね！化け物が襲ってくる謎の鏡の世界を解明していくホラーゲームだよね！");
+                        LineButtom.CButtonFlag = false;
+                        LineButtom.LineNormal = true;
+                        StartCoroutine(Text2());
+                        Notice.Task4 = true;
+                    }
+                    else if (LineButtom.VButtonFlag)
+                    {
+                        //スタックの中身をリセット
+                        SelectStack.Clear();
+                        SelectStack.Push("そうそう！案件配信の内容はコインをどれだけ稼げるか！稼げたコイン分プレゼント企画！だから頑張って練習してね！");
+                        SelectStack.Push("あれだよね！敵をよけながらコインを集めるゲームだよね！");
+                        LineButtom.VButtonFlag = false;
+                        LineButtom.LinePerfect = true;
+                        StartCoroutine(Text2());
+                        Notice.Task4 = true;
+                    }
                 }
             }
             else
