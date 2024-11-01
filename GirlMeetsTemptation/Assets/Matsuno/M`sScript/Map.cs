@@ -30,8 +30,8 @@ public class Map : MonoBehaviour
 
     // ìûíÖÇ‹Ç≈ÇÃãóó£Ç∆ìûíÖéûä‘ÇÃïœêî
     int Distance = 0;
-    int Timer = 0;
-    int CarTimer = 0;
+    public static int Timer = 0;
+    public static int CarTimer = 0;
     int BicycleTimer = 0;
 
     void Start()
@@ -67,6 +67,8 @@ public class Map : MonoBehaviour
         {
             if (ButtonManager.GMapFirstFlag)
             {
+                UIOFF();
+                CarBar.SetActive(true);
                 CarButton.Select();
                 ButtonManager.GMapFirstFlag = false;
             }
@@ -102,6 +104,7 @@ public class Map : MonoBehaviour
     public void CarNav()
     {
         FlagOFF();
+        UIOFF();
         CarFlag = true;
         CarBar.SetActive(true);
     }
@@ -109,6 +112,7 @@ public class Map : MonoBehaviour
     public void HumanNav()
     {
         FlagOFF();
+        UIOFF();
         HumanFlag = true;
         HumanBar.SetActive(true);
     }
@@ -116,6 +120,7 @@ public class Map : MonoBehaviour
     public void BocycleNav()
     {
         FlagOFF();
+        UIOFF();
         BicycleFlag = true;
         BicycleBar.SetActive(true);
     }
@@ -125,6 +130,9 @@ public class Map : MonoBehaviour
         CarFlag = false;
         HumanFlag = false;
         BicycleFlag = false;
+    }
+    void UIOFF()
+    {
         CarBar.SetActive(false);
         HumanBar.SetActive(false);
         BicycleBar.SetActive(false);

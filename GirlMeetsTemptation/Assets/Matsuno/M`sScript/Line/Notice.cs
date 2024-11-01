@@ -11,6 +11,7 @@ public class Notice : MonoBehaviour
     public static int NoticeCnt;
     public static bool FirstTaskText = false;
     public static bool ManeLineTaskFlagON = false;
+    public static bool Tomodati1TaskFlagON = false;
     bool test = false;
     [SerializeField] GameObject Phone;
     [SerializeField] TextMeshProUGUI TaskNoticeText;
@@ -65,8 +66,8 @@ public class Notice : MonoBehaviour
         }
         else if(NoticeCnt == 2)
         {
-            ManeLineTaskFlagON = true;
-            TaskNoticeText.text = "マネージャーからのBYEN通知";
+            Tomodati1TaskFlagON = false;
+            TaskNoticeText.text = "友達からのBYEN通知";
         }
         else if (NoticeCnt == 3)
         {

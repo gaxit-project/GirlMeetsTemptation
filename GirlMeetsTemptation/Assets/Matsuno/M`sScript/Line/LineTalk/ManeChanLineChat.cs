@@ -101,11 +101,11 @@ public class ManeChanLineChat : MonoBehaviour
                         StartCoroutine(Text2());
                     }
                 }
-                else if(number1 == 2)
+                else if(number1 == 5)
                 {
                     SelectStack.Clear();
                 }
-                else if(number1 == 3)
+                else if(number1 == 6)
                 {
                     SelectStack.Clear();
                 }
@@ -118,7 +118,6 @@ public class ManeChanLineChat : MonoBehaviour
                     LineStack.Clear();
                     //通常時のラインテキストランダム表示
                     LineRndCnt = Random.Range(1, 10);
-                    LineRndCnt = 1;
                     if (LineRndCnt < 5)
                     {
                         LineButtom.SelectKey(LineRndCnt, LineRndCnt + 2,LineRndCnt + 4);
@@ -418,7 +417,7 @@ public class ManeChanLineChat : MonoBehaviour
                     if (LineButtom.XButtonFlag)
                     {
                         SelectStack.Push("決まりだね！いい観光地をリストアップしておくよ");
-                        SelectStack.Push("海外がいい！映えスポットたくさんあるし、写真もいっぱい撮りたい✈️");
+                        SelectStack.Push("海外がいい！映えスポットたくさんあるし、写真もいっぱい撮りたい");
                         LineButtom.XButtonFlag = false;
                         LineButtom.LinePerfect = true;
                         StartCoroutine(Text2());
@@ -433,7 +432,7 @@ public class ManeChanLineChat : MonoBehaviour
                     }
                     else if (LineButtom.VButtonFlag)
                     {
-                        SelectStack.Push("まぁ、疲れるのもわかるけど、仕事だし頑張ろうよ」");
+                        SelectStack.Push("まぁ、疲れるのもわかるけど、仕事だし頑張ろうよ");
                         SelectStack.Push("どっちもパスで。旅行は疲れるから嫌だな");
                         LineButtom.VButtonFlag = false;
                         LineButtom.LineBad = true;
