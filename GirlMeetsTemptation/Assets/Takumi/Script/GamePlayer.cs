@@ -11,6 +11,7 @@ public class GamePlayer : MonoBehaviour
     public Collider playerCol;
     private InputAction MiniJumpAction;
     private InputAction MiniFallAction;
+    private InputAction ShotDownAction;
 
     [Header("移動設定")]
     public float speed;
@@ -35,12 +36,14 @@ public class GamePlayer : MonoBehaviour
         var actionMap = pInput.currentActionMap;
         MiniJumpAction = actionMap["MiniGameJump"];
         MiniFallAction = actionMap["miniGameFall"];
+        ShotDownAction = actionMap["Shutdown"];
     }
 
     void Update()
     {
         bool jump = MiniJumpAction.triggered;
         bool fall = MiniFallAction.triggered;
+        bool down = ShotDownAction.triggered;
         // X方向に自動で進む
         //Vector3 move = new Vector3(speed, rb.velocity.y, rb.velocity.z); // 常にspeedの値でX方向に進む
         //rb.velocity = new Vector3(rb.velocity.x * speed, rb.velocity.y, rb.velocity.z); // 速度を設定
@@ -82,6 +85,16 @@ public class GamePlayer : MonoBehaviour
                 time = 0f;
             }
         }
+
+
+        //アプリを閉じる
+        if (down)
+        {
+            MiniGameManager.isOpen = false;
+        }
+
+
+
     }
 
     private void OnCollisionEnter(Collision col)
@@ -144,6 +157,11 @@ public class GamePlayer : MonoBehaviour
                 //Physics.IgnoreCollision(playerCol, floorCol, true);
                 isFall = true;
             }
+        }
+        if (col.CompareTag("Coin"))
+        {
+            MiniGameManager.CoinCount++;
+            Destroy(col.gameObject);
         }
     }
     private void OnCollisionStay(Collision col)

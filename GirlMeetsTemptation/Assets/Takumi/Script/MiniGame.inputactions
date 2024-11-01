@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Shutdown",
+                    "type": "Button",
+                    "id": "5381fdd4-79a2-45dc-accf-29b7dca6f100",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -286,7 +295,7 @@
                 {
                     "name": "",
                     "id": "3858cf56-0d45-4966-b323-67cc29330bbf",
-                    "path": "<XInputController>/buttonNorth",
+                    "path": "<XInputController>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -308,11 +317,33 @@
                 {
                     "name": "",
                     "id": "4486f31e-ff83-46e8-9452-589cedf1290a",
-                    "path": "<XInputController>/buttonWest",
+                    "path": "<XInputController>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "miniGameFall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "47753722-725e-4087-95bc-6ec546f6db02",
+                    "path": "<XInputController>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Shutdown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "393c35a9-ddad-47ea-95fa-69c234d2d55f",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Shutdown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

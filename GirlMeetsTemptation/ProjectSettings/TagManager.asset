@@ -12,6 +12,7 @@ TagManager:
   - Car
   - GameOver
   - Meteo
+  - Coin
   layers:
   - Default
   - TransparentFX

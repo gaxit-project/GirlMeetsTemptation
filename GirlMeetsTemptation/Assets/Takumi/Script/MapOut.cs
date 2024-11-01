@@ -14,5 +14,9 @@ public class MapOut : MonoBehaviour
             Destroy(col.gameObject);
             MapGen.CreateMap();
         }
+        if (col.gameObject.CompareTag("Coin"))
+        {
+            Destroy(col.gameObject);
+        }
     }
 }

@@ -12,18 +12,35 @@ public class MiniGameManager : MonoBehaviour
     public static bool isOpen = false;
     //ミニゲームを開始しているか
     public static bool isStart = false;
+
     //ミニゲーム
     public GameObject MiniGame;
     //ミニゲームUI
     public GameObject MiniGameUI;
-    //ミニゲームUI
+    //ミニゲームメッセージUI
+    public GameObject MiniUI;
+    //ミニゲームメッセージUI
+    public Text Minitext;
+    //メインスマホUI
     public GameObject MainPhoneUI;
     //ミニゲームMap
     public MapGen MapGen;
 
+    float count = 0;
 
+    //コインの枚数
+    public static int CoinCount = 0;
+    //走行距離
+    public static float RunDistance = 0f;
 
+    // サブミッションがクリアしたか
+    public static bool SubClear = false;
 
+    //サブミッションの種類
+    //0 :何もなし 
+    //1 :コインの取得
+    //2 :走る距離(未実装)
+    public static int SubMissionID = 0;
 
     //死亡時の種類
     //0 :何もなし 
@@ -32,12 +49,15 @@ public class MiniGameManager : MonoBehaviour
     //3 :頭上からの落下物(未実装)
     public static int MiniDeathID = 0;
 
+    float time = 0;
+
+
+
     public static MiniGameManager instance;
 
 
     void Start()
     {
-        //Time.timeScale = 0.0f;
         MiniDeathID = 0;
         MapGen.InitMapGen();
 
@@ -47,22 +67,58 @@ public class MiniGameManager : MonoBehaviour
     {
         if (isOpen)
         {
-            PhoneRote(isOpen);
+            if (isStart)
+            {
+                MiniUI.SetActive(false);
+            }
+            else
+            {
+                MiniUI.SetActive(true);
+            }
+
+            time += Time.deltaTime;
+            int ITime = (int)time;
+            if(ITime == 1)
+            {
+                Minitext.text = "3";
+            }
+            else if(ITime == 2)
+            {
+                Minitext.text = "2";
+            }
+            else if(ITime == 3)
+            {
+                Minitext.text = "1";
+            }
+            else if(ITime >= 4)
+            {
+                Minitext.text = "Go!";
+                isStart = true;
+            }
+
+            if(MiniDeathID != 0)
+            {
+                isStart = false;
+                Minitext.text = "GameOver";
+            }
+
             MiniGame.SetActive(isOpen);
             MiniGameUI.SetActive(isOpen);
+            MainPhoneUI.SetActive(false);
             MapGen.InitMapGen();
+
         }
         else
         {
-            PhoneRote(isOpen);
+            Minitext.text = "3";
+            time = 0;
             isStart = false;
             MapDestroy();
             MiniGame.SetActive(isOpen);
             MiniGameUI.SetActive(isOpen);
+            MainPhoneUI.SetActive(true);
         }
 
-        Debug.Log("isOpen : " + isOpen);
-        Debug.Log("isStart : " + isStart);
 
         //デバッグ用
         if (Input.GetKeyDown("k"))
@@ -76,30 +132,8 @@ public class MiniGameManager : MonoBehaviour
                 isOpen= true;
             }
         }
-        if (Input.GetKeyDown("l"))
-        {
-            if (isStart)
-            {
-                isStart = false;
-            }
-            else
-            {
-                isStart = true;
-            }
-        }
     }
 
-    void PhoneRote(bool game)
-    {
-        if (game)
-        {
-            MainPhoneUI.transform.rotation = Quaternion.Euler(0, 0, 90);
-        }
-        else
-        {
-            MainPhoneUI.transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-    }
     void MapDestroy()
     {
         GameObject[] Top = GameObject.FindGameObjectsWithTag("Top");
