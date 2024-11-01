@@ -13,6 +13,7 @@ public class Map : MonoBehaviour
     [SerializeField] GameObject CarBar;
     [SerializeField] GameObject HumanBar;
     [SerializeField] GameObject BicycleBar;
+    [SerializeField] Button LineButton;
     float distanceOfPlayer;
     float StartDistanceOfPlayer;
     //Slider‚ð“ü‚ê‚é
@@ -80,6 +81,7 @@ public class Map : MonoBehaviour
             {
                 ButtonManager.GMapFlag = false;
                 MapApp.SetActive(false);
+                LineButton.Select();
             }
 
             if(CarFlag)

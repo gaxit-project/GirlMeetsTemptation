@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private InputAction ButtonBAction;//Bボタンの押下状態
     public GameObject phoneUI;
 
+    public static bool PhoneONTaskFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         MoveRAction = actionMap["MoveR"];
         MoveLAction = actionMap["MoveL"];
         ButtonBAction = actionMap["ButtonB"];
+        ButtonManager.TwiXFlag = false;
     }
 
     // Update is called once per frame
@@ -110,12 +113,14 @@ public class PlayerMovement : MonoBehaviour
         if (phoneOn && !ButtonManager.TwiXFlag)
         {
             phoneUI.SetActive(true);
+            PhoneONTaskFlag = false;
         }
         else
         {
             phoneUI.SetActive(false);
             MiniGameManager.isStart = false;
             MiniGameManager.isOpen = false;
+            PhoneONTaskFlag = true;
         }
     }
 

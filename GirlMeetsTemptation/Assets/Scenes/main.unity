@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2259,7 +2259,7 @@ Transform:
   m_GameObject: {fileID: 153590890}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -959.67523, y: -526.4444, z: 300}
+  m_LocalPosition: {x: -959.67523, y: -526.4444, z: 180}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8147,8 +8147,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30DE\u30CD\u30FC\u30B8\u30E3\u30FC\u304B\u3089\u306EBYEN\u306E\u901A\u77E5"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2d95f746632de71448c45ffcb6693d29, type: 2}
+  m_sharedMaterial: {fileID: -6120581566037417779, guid: 2d95f746632de71448c45ffcb6693d29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11501,8 +11501,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "4\u5206(500m)\n\u4EA4\u901A\u60C5\u5831\u3092\u53CD\u6620\u3057\u305F\u73FE\u6642\u70B9\u306E\u6700\u77ED\u30EB\u30FC\u30C8"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2d95f746632de71448c45ffcb6693d29, type: 2}
+  m_sharedMaterial: {fileID: -6120581566037417779, guid: 2d95f746632de71448c45ffcb6693d29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14756,6 +14756,7 @@ MonoBehaviour:
   CarBar: {fileID: 789801646}
   HumanBar: {fileID: 1251286441}
   BicycleBar: {fileID: 456502306}
+  LineButton: {fileID: 88910556}
   slider: {fileID: 182706878}
   CarButton: {fileID: 1510917556}
   HumanButton: {fileID: 1096867015}
@@ -16146,6 +16147,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1420ca9fe7b848849b6c4db90114ec5e, type: 3}
   - {fileID: 8300000, guid: 6825652d68086714a9e929fbdb6dc2a0, type: 3}
   - {fileID: 8300000, guid: 4012d753e0a593f4685f489bb193ea0e, type: 3}
+  smartSE: []
   upButton: {fileID: 101609386}
   downButton: {fileID: 139956825}
 --- !u!4 &1707144494
@@ -18218,6 +18220,7 @@ MonoBehaviour:
   Tomodati2Talk: {fileID: 1280430403}
   PhoneUI: {fileID: 1580546052}
   PhoneLineUI: {fileID: 556834014}
+  LineButton: {fileID: 88910556}
   EvaluationUI: {fileID: 762483742}
 --- !u!114 &2033644715
 MonoBehaviour:
@@ -18726,7 +18729,7 @@ MonoBehaviour:
   - {fileID: 6477963767702881855, guid: c07502a41ed5dab4389fe71650030a1e, type: 3}
   - {fileID: 372710878001306611, guid: cc22d14f9896946418ad3ae283984ba2, type: 3}
   finalStagePrefab: {fileID: 8066280751613141708, guid: fdb833b60409abc439a6a04a1bee9ec3, type: 3}
-  totalStages: 20
+  totalStages: 12
   StageList:
   - {fileID: 1866142632}
 --- !u!4 &2069484619

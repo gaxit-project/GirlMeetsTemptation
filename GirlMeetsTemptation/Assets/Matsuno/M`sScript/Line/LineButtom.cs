@@ -47,6 +47,7 @@ public class LineButtom : MonoBehaviour
     public static bool SelectTextUIFlag = false;
 
     public static int SelectX, SelectC, SelectV;
+    [SerializeField] Button LineButton;
 
     bool MenuFlag = true;
     bool HomeBack = true;
@@ -203,6 +204,7 @@ public class LineButtom : MonoBehaviour
                 TalkHome.SetActive(false);
                 PhoneLineUI.SetActive(false);
                 PhoneUI.SetActive(true);
+                LineButton.Select();
                 ButtonManager.TwiXFlag = false;
             }
         }
