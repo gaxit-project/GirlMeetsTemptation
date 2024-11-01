@@ -8,10 +8,11 @@ public class FameManager : MonoBehaviour
 {
     public Image Fgauge; //名声ゲージ画像
     private float Fscore = 0f; //名声ゲージ増加分用変数
+    private float TimePerScore = 0.03f / 5f; //5秒に3%の減少
 
     void Start()
     {
-        Fgauge.fillAmount = Fscore;
+        Fgauge.fillAmount = 0.5f;
     }
 
     void Update()
@@ -26,6 +27,8 @@ public class FameManager : MonoBehaviour
             DownFgauge(10);
         }
         
+        Fscore -= TimePerScore * Time.deltaTime;
+
         Fgauge.fillAmount += Fscore;
         Fscore = 0f;
     }
