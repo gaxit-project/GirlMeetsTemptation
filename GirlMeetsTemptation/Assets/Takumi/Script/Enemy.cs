@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
             //
             if (col.gameObject.CompareTag("Player"))
             {
+                Audio.Instance.SmartPlaySound(3);//人とぶつかり音
                 if (!MiniGameManager.islunatic)//Not狂乱時
                 {
                     // プレイヤーの Rigidbody を取得
@@ -61,6 +62,7 @@ public class Enemy : MonoBehaviour
                     if (0 == MiniGameManager.MiniDeathID)
                     {
                         MiniGameManager.MiniDeathID = 2;
+                        Audio.Instance.SmartPlaySound(5);//車とぶつかる音
                     }
                     Rigidbody playerRB = col.gameObject.GetComponent<Rigidbody>();
 

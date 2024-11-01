@@ -72,6 +72,7 @@ public class GamePlayer : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
             isGrounded = false; // ジャンプ中は地面にいないとみなす
+            Audio.Instance.SmartPlaySound(0);//ジャンプ音
         }
 
         if (isFall)
@@ -114,6 +115,7 @@ public class GamePlayer : MonoBehaviour
                 playerCol.enabled = false; ;
                 //Physics.IgnoreCollision(playerCol, floorCol, true);
                 isFall = true;
+                Audio.Instance.SmartPlaySound(1);//落ちる音
             }
         }
 
@@ -123,6 +125,7 @@ public class GamePlayer : MonoBehaviour
             if(0 == MiniGameManager.MiniDeathID)
             {
                 MiniGameManager.MiniDeathID = 1;
+                Audio.Instance.SmartPlaySound(4);//落下死亡音
             }
         }
         if(col.gameObject.CompareTag("Human") || col.gameObject.CompareTag("Car"))
@@ -162,6 +165,7 @@ public class GamePlayer : MonoBehaviour
         {
             MiniGameManager.CoinCount++;
             Destroy(col.gameObject);
+            Audio.Instance.SmartPlaySound(2);//コイン獲得音
         }
     }
     private void OnCollisionStay(Collision col)
@@ -176,6 +180,7 @@ public class GamePlayer : MonoBehaviour
                 playerCol.enabled = false;
                 //Physics.IgnoreCollision(playerCol, floorCol, true);
                 isFall = true;
+                Audio.Instance.SmartPlaySound(1);//落ちる音
             }
         }
     }

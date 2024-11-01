@@ -36,6 +36,9 @@ public class MiniGameManager : MonoBehaviour
     // サブミッションがクリアしたか
     public static bool SubClear = false;
 
+    //一回変数
+    bool isOnce = false;
+
     //サブミッションの種類
     //0 :何もなし 
     //1 :コインの取得
@@ -80,19 +83,18 @@ public class MiniGameManager : MonoBehaviour
             int ITime = (int)time;
             if(ITime == 1)
             {
-                Minitext.text = "3";
+                Minitext.text = "2";
             }
             else if(ITime == 2)
             {
-                Minitext.text = "2";
+                Minitext.text = "1";
             }
             else if(ITime == 3)
             {
-                Minitext.text = "1";
+                Minitext.text = "Go!";
             }
             else if(ITime >= 4)
             {
-                Minitext.text = "Go!";
                 isStart = true;
             }
 
@@ -119,6 +121,21 @@ public class MiniGameManager : MonoBehaviour
             MainPhoneUI.SetActive(true);
         }
 
+        if (SubClear)
+        {
+            //名声スコア+10
+            SubClear = false;
+            if (!isOnce)
+            {
+                //名声スコア+10
+
+                //Sound
+
+                StartCoroutine(SubMissionReset());
+            }
+
+        }
+
 
         //デバッグ用
         if (Input.GetKeyDown("k"))
@@ -132,6 +149,17 @@ public class MiniGameManager : MonoBehaviour
                 isOpen= true;
             }
         }
+
+        if (Input.GetKeyDown("p"))
+        {
+            SubMissionID = 1;
+        }
+    }
+
+    IEnumerator SubMissionReset()
+    {
+        yield return new WaitForSeconds(3);
+        SubMissionID = 0;
     }
 
     void MapDestroy()
