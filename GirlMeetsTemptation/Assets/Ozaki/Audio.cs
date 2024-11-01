@@ -5,8 +5,10 @@ using UnityEngine.UI;
 public class Audio : MonoBehaviour
 {
     [SerializeField] AudioClip[] SE;  // 効果音の配列
+    [SerializeField] AudioClip[] smartSE;
     private AudioSource bgmSource;    // SE[0] 用の AudioSource（ループ専用）
     private AudioSource seSource;     // その他の効果音用の AudioSource
+    private AudioSource smartSource;     // スマホ用 AudioSource
     public Button upButton;
     public Button downButton;
     private float volumeStep = 0.05f;
@@ -40,6 +42,13 @@ public class Audio : MonoBehaviour
             seSource.playOnAwake = false;
             seSource.volume = 0.5f;
         }
+        
+        if (smartSource == null)
+        {
+            smartSource = gameObject.AddComponent<AudioSource>();
+            smartSource.playOnAwake = false;
+            smartSource.volume = 0.5f;
+        }
 
         if (upButton != null)
         {
@@ -57,6 +66,7 @@ public class Audio : MonoBehaviour
     {
         bgmSource.volume = Mathf.Clamp(bgmSource.volume + volumeStep, 0, 1);
         seSource.volume = Mathf.Clamp(seSource.volume + volumeStep, 0, 1);
+        smartSource.volume = Mathf.Clamp(smartSource.volume - volumeStep, 0, 1);
     }
 
     // 音量を下げるメソッド
@@ -64,6 +74,7 @@ public class Audio : MonoBehaviour
     {
         bgmSource.volume = Mathf.Clamp(bgmSource.volume - volumeStep, 0, 1);
         seSource.volume = Mathf.Clamp(seSource.volume - volumeStep, 0, 1);
+        smartSource.volume = Mathf.Clamp(smartSource.volume + volumeStep, 0, 1);
     }
 
     // サウンドを再生するメソッド
@@ -83,6 +94,15 @@ public class Audio : MonoBehaviour
             seSource.PlayOneShot(SE[index]);
         }
     }
+
+    public void SmartPlaySound(int index){
+
+        if (index >= 0 && index < smartSE.Length){
+            smartSource.PlayOneShot(smartSE[index]);
+        }
+        //Audio.GetInstance().SmartPlaySound(0);
+    }
+
     public bool IsPlayingSound(int index)
     {
         return bgmSource.isPlaying && bgmSource.clip == SE[index];
