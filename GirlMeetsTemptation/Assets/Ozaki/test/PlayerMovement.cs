@@ -5,10 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement instance;
+
     public float moveSpeed;
     private float firstSpeed;
     public Camera playcamera;
-    private int currentLane = 1; // 0: 左, 1: 中央, 2: 右 (初期位置は中央)
+    public static int currentLane = 1; // 0: 左, 1: 中央, 2: 右 (初期位置は中央)
     private bool phoneOn = true;      
     private float elapsedTime = 0f;  // 経過時間を保持する変数
     private bool isCounting = false;  // 計測中かどうかを示すフラグ
@@ -142,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // レーン間の移動を行う関数
-    void MoveToLane()
+    public void MoveToLane()
     {
         Vector3 targetPosition = transform.position;
 

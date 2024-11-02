@@ -1,5 +1,5 @@
 {
-    "name": "GirlMeetsTemptation",
+    "name": "LineSystemButton",
     "maps": [
         {
             "name": "Player",
@@ -36,6 +36,24 @@
                     "name": "LineBackY",
                     "type": "Button",
                     "id": "20f450ea-7ec9-430c-a259-f02efa689e77",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LineLaneLeft",
+                    "type": "Button",
+                    "id": "8fb2e327-97dd-47b8-b3ad-fda83260d3a4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LineLaneRight",
+                    "type": "Button",
+                    "id": "d32df33b-cf5f-4c5b-99a5-bcafb62bf38f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -84,6 +102,50 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "LineBackY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5fc054f8-53bf-406d-a9df-927e97c1b482",
+                    "path": "<XInputController>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "LineLaneLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "75703c7e-7e36-455a-9609-e3843f261358",
+                    "path": "<XInputController>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "LineLaneLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "06cce7c6-63f5-408a-8031-a3237a81be98",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "LineLaneRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c06665c3-67db-43d4-b420-79bac61d003c",
+                    "path": "<XInputController>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LineLaneRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

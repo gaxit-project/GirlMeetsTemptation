@@ -8,6 +8,7 @@ public class MiniGameManager : MonoBehaviour
     [Header("設定")]
     //狂乱ゲージ
     public static bool islunatic = false;
+    float lunatic;
     //ミニゲームが開かれているか
     public static bool isOpen = false;
     //ミニゲームを開始しているか
@@ -68,14 +69,16 @@ public class MiniGameManager : MonoBehaviour
 
     void Update()
     {
-        if(Timelimit.Instance.getTemp() <= 0)
+        /*
+        lunatic = Timelimit.Instance.getTemp();
+        if (lunatic <= 0)
         {
             islunatic = false;
-        }else if(Timelimit.Instance.getTemp() >= 1)
+        }else if(lunatic >= 1)
         {
             islunatic = true;
         }
-
+        */
 
         if (isOpen)
         {

@@ -56,6 +56,8 @@ public class LineButtom : MonoBehaviour
     private InputAction LineA;
     private InputAction LineB;
     private InputAction LineY;
+    private InputAction LineL;
+    private InputAction LineR;
 
     // line‚Ì•]‰¿‚ÌUI‚Æƒtƒ‰ƒO
     [SerializeField] GameObject EvaluationUI;
@@ -83,6 +85,11 @@ public class LineButtom : MonoBehaviour
 
     }
 
+    void OnEnable()
+    {
+        
+    }
+
     private void Update()
     {
         if (ButtonManager.TwiXFlag)
@@ -100,6 +107,8 @@ public class LineButtom : MonoBehaviour
                 LineA = actionMap["LineSelectA"];
                 LineB = actionMap["LineSelectB"];
                 LineY = actionMap["LineBackY"];
+                LineR = actionMap["LineLaneRight"];
+                LineL = actionMap["LineLaneLeft"];
                 ShowObject();
             }
         }
@@ -110,6 +119,28 @@ public class LineButtom : MonoBehaviour
             bool LineButtonA = LineA.triggered;
             bool LineButtonB = LineB.triggered;
             bool LineButtonY = LineY.triggered;
+            bool LineButtonR = LineR.triggered;
+            bool LineButtonL = LineL.triggered;
+
+
+            // ¶‚Ö‚ÌˆÚ“®
+            if (LineButtonL && PlayerMovement.currentLane > 0 && !Input.GetKey(KeyCode.LeftShift))
+            {
+                PlayerMovement.currentLane--;
+                PlayerMovement.instance.MoveToLane();
+            }
+
+            // ‰E‚Ö‚ÌˆÚ“®
+            if (LineButtonR && PlayerMovement.currentLane < 2 && !Input.GetKey(KeyCode.LeftShift))
+            {
+                PlayerMovement.currentLane++;
+                PlayerMovement.instance.MoveToLane();
+            }
+
+
+
+
+
             Debug.Log("‚·‚¢‚Á‚¿‚¨‚¨‚¨‚¨‚¨‚¨‚¨‚¨‚¨‚Ó");
             if (Input.GetKey(KeyCode.Z) || LineButtonY)
             {
