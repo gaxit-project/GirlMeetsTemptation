@@ -86,7 +86,6 @@ public class MapGen : MonoBehaviour
                 }
             }
         }
-        Debug.Log("StartPos : " + StartPos);
 
         if (Input.GetKeyDown("u")){
             Instantiate(TopObj, new Vector3(StartPos, TopPos.position.y, 0f), Quaternion.identity);
@@ -104,7 +103,6 @@ public class MapGen : MonoBehaviour
             Instantiate(TopObj, new Vector3(i, TopPos.position.y, 0f), Quaternion.identity);
             Instantiate(MidObj, new Vector3(i, MidPos.position.y, 0f), Quaternion.identity);
             Instantiate(BotObj, new Vector3(i, BotPos.position.y, 0f), Quaternion.identity);
-            Debug.Log("生成ーーーー");
         }
     }
 

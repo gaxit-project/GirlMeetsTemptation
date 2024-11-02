@@ -87,31 +87,26 @@ public class LineButtom : MonoBehaviour
 
     void OnEnable()
     {
+        TalkHome.SetActive(true);
+        PhoneUI.SetActive(false);
+        PhoneLineUI.SetActive(true);
+        Karepi.Select();
+        ButtonManager.TwiXFirstFlag = false;
+        
+        var pInput = GetComponent<PlayerInput>();
+        var actionMap = pInput.currentActionMap;
+        LineX = actionMap["LineSelectX"];
+        LineA = actionMap["LineSelectA"];
+        LineB = actionMap["LineSelectB"];
+        LineY = actionMap["LineBackY"];
+        LineR = actionMap["MoveR"];
+        LineL = actionMap["MoveL"];
+        ShowObject();
         
     }
 
     private void Update()
     {
-        if (ButtonManager.TwiXFlag)
-        {
-            if (ButtonManager.TwiXFirstFlag)
-            {
-                TalkHome.SetActive(true);
-                PhoneUI.SetActive(false);
-                PhoneLineUI.SetActive(true);
-                Karepi.Select();
-                ButtonManager.TwiXFirstFlag = false;
-                var pInput = GetComponent<PlayerInput>();
-                var actionMap = pInput.currentActionMap;
-                LineX = actionMap["LineSelectX"];
-                LineA = actionMap["LineSelectA"];
-                LineB = actionMap["LineSelectB"];
-                LineY = actionMap["LineBackY"];
-                LineR = actionMap["LineLaneRight"];
-                LineL = actionMap["LineLaneLeft"];
-                ShowObject();
-            }
-        }
         //戻る
         if(!MenuFlag)
         {
@@ -123,6 +118,7 @@ public class LineButtom : MonoBehaviour
             bool LineButtonL = LineL.triggered;
 
 
+            #region メインゲームレーン移動
             // 左への移動
             if (LineButtonL && PlayerMovement.currentLane > 0 && !Input.GetKey(KeyCode.LeftShift))
             {
@@ -136,13 +132,14 @@ public class LineButtom : MonoBehaviour
                 PlayerMovement.currentLane++;
                 PlayerMovement.instance.MoveToLane();
             }
+            #endregion
 
 
 
 
 
-            Debug.Log("すいっちおおおおおおおおおふ");
-            if (Input.GetKey(KeyCode.Z) || LineButtonY)
+            #region アプリを閉じる
+            if (LineButtonY)
             {
                 TalkHome.SetActive(true);
                 KarepiTalk.SetActive(false);
@@ -177,7 +174,9 @@ public class LineButtom : MonoBehaviour
                 SelectTextUIFlag = false;
                 Invoke(nameof(MenuStart),0.5f);
             }
-            if (LineButtonX && !ButtonOFFFlag || Input.GetKey(KeyCode.X) && !ButtonOFFFlag)
+            #endregion
+
+            if (LineButtonX && !ButtonOFFFlag)
             {
                 if (SelectFlag)
                 {
@@ -192,7 +191,7 @@ public class LineButtom : MonoBehaviour
                 SelectTextUIFlag = false;
                 ButtonOFFFlag = true;
             }
-            else if (LineButtonA && !ButtonOFFFlag || Input.GetKey(KeyCode.C) && !ButtonOFFFlag)
+            else if (LineButtonA && !ButtonOFFFlag)
             {
                 if (SelectFlag)
                 {
@@ -207,7 +206,7 @@ public class LineButtom : MonoBehaviour
                 SelectTextUIFlag = false;
                 ButtonOFFFlag = true;
             }
-            else if (LineButtonB && !ButtonOFFFlag || Input.GetKey(KeyCode.V) && !ButtonOFFFlag)
+            else if (LineButtonB && !ButtonOFFFlag)
             {
                 if (SelectFlag)
                 {
@@ -228,7 +227,7 @@ public class LineButtom : MonoBehaviour
         {
             // lineを閉じる
             bool LineButtonY = LineY.triggered;
-            if (Input.GetKey(KeyCode.Z) || LineButtonY)
+            if (LineButtonY)
             {
                 LineSystemUI.SetActive(false);
                 Debug.Log("こんちくわんこひひ");

@@ -328,7 +328,7 @@
                 {
                     "name": "",
                     "id": "47753722-725e-4087-95bc-6ec546f6db02",
-                    "path": "<XInputController>/buttonNorth",
+                    "path": "<XInputController>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

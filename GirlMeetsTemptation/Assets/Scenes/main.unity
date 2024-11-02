@@ -5525,6 +5525,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d859f5509ec96054a8245d82c689d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerObj: {fileID: 799357008}
+  MiniObj: {fileID: 836509383}
+  LineObj: {fileID: 2033644713}
   GMapUI: {fileID: 1061516752}
   LineObject: {fileID: 801037950}
 --- !u!4 &548857609
@@ -8229,7 +8232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: a2c04e3d10896af438f35fa01453cae7, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 12092d724eeceaf46a95819e16ba4099, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -8510,7 +8513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &860059711
 Transform:
   m_ObjectHideFlags: 0
@@ -19538,7 +19541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 91355ac973a89e0419ee2f35a61de40f, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 12092d724eeceaf46a95819e16ba4099, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -19553,7 +19556,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: 8db8645c-1560-4b91-bae6-3bb057490c20
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!224 &2033644716

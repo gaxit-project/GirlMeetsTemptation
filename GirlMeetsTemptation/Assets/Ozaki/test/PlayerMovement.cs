@@ -27,7 +27,16 @@ public class PlayerMovement : MonoBehaviour
 
     public static bool PhoneONTaskFlag = false;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        //InputSystem用
+        var pInput = GetComponent<PlayerInput>();
+        var actionMap = pInput.currentActionMap;
+        MoveRAction = actionMap["MoveR"];
+        MoveLAction = actionMap["MoveL"];
+        ButtonBAction = actionMap["ButtonB"];
+    }
+
     void Start()
     {
         // 初期回転角度を設定
@@ -43,10 +52,25 @@ public class PlayerMovement : MonoBehaviour
         ButtonManager.TwiXFlag = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(holedead == null){
+        if (ButtonManager.mainInput)
+        {
+            //InputSystem用
+            var pInput = GetComponent<PlayerInput>();
+            var actionMap = pInput.currentActionMap;
+            MoveRAction = actionMap["MoveR"];
+            MoveLAction = actionMap["MoveL"];
+            ButtonBAction = actionMap["ButtonB"];
+        }
+
+        foreach (var device in InputSystem.devices)
+        {
+            Debug.Log("Connected device: " + device.name);
+        }
+
+
+        if (holedead == null){
             holedead = FindObjectOfType<Holedead>();
         }
         //InputSystem用

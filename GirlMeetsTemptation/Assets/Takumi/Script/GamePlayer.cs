@@ -9,9 +9,15 @@ public class GamePlayer : MonoBehaviour
     public Animator animator;
     public Rigidbody rb;
     public Collider playerCol;
+
+    //プレイヤー入力
     private InputAction MiniJumpAction;
     private InputAction MiniFallAction;
     private InputAction ShotDownAction;
+    private InputAction MoveRAction;//右移動ボタンの押下状態
+    private InputAction MoveLAction;//左移動ボタンの押下状態
+
+
 
     [Header("移動設定")]
     public float speed;
@@ -29,21 +35,55 @@ public class GamePlayer : MonoBehaviour
     //床のcollider
     private Collider floorCol;
 
-
-    void Start()
+    void OnEnable()
     {
+        
         var pInput = GetComponent<PlayerInput>();
         var actionMap = pInput.currentActionMap;
         MiniJumpAction = actionMap["MiniGameJump"];
         MiniFallAction = actionMap["miniGameFall"];
         ShotDownAction = actionMap["Shutdown"];
+        MoveRAction = actionMap["MoveR"];
+        MoveLAction = actionMap["MoveL"];
+        
     }
+
 
     void Update()
     {
+        //InputSystem用
         bool jump = MiniJumpAction.triggered;
         bool fall = MiniFallAction.triggered;
         bool down = ShotDownAction.triggered;
+        bool MoveR = MoveRAction.triggered;
+        bool MoveL = MoveLAction.triggered;
+
+        #region メインゲームレーン移動
+        // 左への移動
+        if (MoveL && PlayerMovement.currentLane > 0 && !Input.GetKey(KeyCode.LeftShift))
+        {
+            PlayerMovement.currentLane--;
+            PlayerMovement.instance.MoveToLane();
+        }
+
+        // 右への移動
+        if (MoveR && PlayerMovement.currentLane < 2 && !Input.GetKey(KeyCode.LeftShift))
+        {
+            PlayerMovement.currentLane++;
+            PlayerMovement.instance.MoveToLane();
+        }
+        #endregion
+
+
+        #region アプリを閉じる
+        //アプリを閉じる
+        if (down)
+        {
+            //ButtonManager.instance.PlayInputSet();
+            MiniGameManager.isOpen = false;
+        }
+        #endregion
+
         // X方向に自動で進む
         //Vector3 move = new Vector3(speed, rb.velocity.y, rb.velocity.z); // 常にspeedの値でX方向に進む
         //rb.velocity = new Vector3(rb.velocity.x * speed, rb.velocity.y, rb.velocity.z); // 速度を設定
@@ -73,6 +113,7 @@ public class GamePlayer : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
             isGrounded = false; // ジャンプ中は地面にいないとみなす
             Audio.Instance.SmartPlaySound(0);//ジャンプ音
+            Debug.Log("ジャンプ");
         }
 
         if (isFall)
@@ -85,13 +126,6 @@ public class GamePlayer : MonoBehaviour
                 isFall = false;
                 time = 0f;
             }
-        }
-
-
-        //アプリを閉じる
-        if (down)
-        {
-            MiniGameManager.isOpen = false;
         }
 
 
