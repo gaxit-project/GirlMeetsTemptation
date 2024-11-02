@@ -28,6 +28,14 @@ public class Notice : MonoBehaviour
     void Start()
     {
         FirstTaskText = false;
+        NoticeFlag = false;
+        ManeLineTaskFlagON = false;
+        Tomodati1TaskFlagON = false;
+        Task1 = true;
+        Task2 = true;
+        Task3 = true;
+        Task4 = true;
+        TaskFirstFlag = true;
         Phone.SetActive(false);
     }
 
@@ -86,14 +94,14 @@ public class Notice : MonoBehaviour
         switch (NoticeCnt)
         {
             case 1:
-                Tomodati1TaskFlagON = true;
+                ManeLineTaskFlagON = true;
                 Task1 = false;
-                TaskNoticeText.text = "友達からのBYEN通知";
+                TaskNoticeText.text = "マネージャーからのBYEN通知";
                 break;
             case 2:
-                Tomodati1TaskFlagON = true;
+                ManeLineTaskFlagON = true;
                 Task2 = false;
-                TaskNoticeText.text = "友達からのBYEN通知";
+                TaskNoticeText.text = "マネージャーからのBYEN通知";
                 break;
             case 3:
                 ManeLineTaskFlagON = true;

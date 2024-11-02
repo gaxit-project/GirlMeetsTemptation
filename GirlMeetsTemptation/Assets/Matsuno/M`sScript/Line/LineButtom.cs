@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Composites;
+using static System.Net.Mime.MediaTypeNames;
 
 public class LineButtom : MonoBehaviour
 {
@@ -42,6 +43,15 @@ public class LineButtom : MonoBehaviour
     public static bool Text7 = false;
     public static bool Text8 = false;
     public static bool Text9 = false;
+    public static bool Text10 = false;
+    public static bool Text11 = false;
+    public static bool Text12 = false;
+    public static bool Text13= false;
+    public static bool Text14= false;
+    public static bool Text15= false;
+    public static bool Text16= false;
+    public static bool Text17= false;
+    public static bool Text18= false;
     public static bool FirstText = false;
     public static bool TextRndFlag = true;
     public static bool SelectTextUIFlag = false;
@@ -308,6 +318,51 @@ public class LineButtom : MonoBehaviour
         else if (SelectText == 9)
         {
             Text9 = true;
+            Debug.Log("フラグオン9！" + Text9);
+        }
+        else if (SelectText == 10)
+        {
+            Text10 = true;
+            Debug.Log("フラグオン2！" + Text2);
+        }
+        else if (SelectText == 11)
+        {
+            Text11 = true;
+            Debug.Log("フラグオン3！" + Text3);
+        }
+        else if (SelectText == 12)
+        {
+            Text12 = true;
+            Debug.Log("フラグオン4！" + Text4);
+        }
+        else if (SelectText == 13)
+        {
+            Text13 = true;
+            Debug.Log("フラグオン5！" + Text5);
+        }
+        else if (SelectText == 14)
+        {
+            Text14 = true;
+            Debug.Log("フラグオン6！" + Text6);
+        }
+        else if (SelectText == 15)
+        {
+            Text15 = true;
+            Debug.Log("フラグオン7！" + Text7);
+        }
+        else if (SelectText == 16)
+        {
+            Text16 = true;
+            Debug.Log("フラグオン8！" + Text8);
+        }
+        else if (SelectText == 17)
+        {
+            Text17 = true;
+            Debug.Log("フラグオン9！" + Text9);
+        }
+        else if (SelectText == 18)
+        {
+            Text18 = true;
             Debug.Log("フラグオン9！" + Text9);
         }
     }
