@@ -15,14 +15,21 @@ public class Titleplayer : MonoBehaviour
 
     public Button[] buttons; // ボタンの配列をInspectorで設定
     private int selectedIndex = 0; // 選択中のボタンインデックス
+
+    //ルール説明用
+    public ShowRule rule;
+    public GameObject RuleCanvas;
+
     void Start()
     {
         StageManager(aheadStage);
         // ボタンのセットアップ
-        SetUpButton(0, MainGameScene);
+        SetUpButton(0, rule.StartShowRule);
         SetUpButton(1, QuitGameScene);
 
         UpdateButtonSelection();
+
+        RuleCanvas.SetActive(false);
     }
     private void SetUpButton(int index, UnityEngine.Events.UnityAction action)
     {
