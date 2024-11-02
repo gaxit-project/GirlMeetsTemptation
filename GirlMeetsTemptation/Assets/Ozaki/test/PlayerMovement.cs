@@ -23,18 +23,40 @@ public class PlayerMovement : MonoBehaviour
     private InputAction MoveRAction;//右移動ボタンの押下状態
     private InputAction MoveLAction;//左移動ボタンの押下状態
     private InputAction ButtonBAction;//Bボタンの押下状態
+    private InputAction StopAction;//RLの押下状態
+
+    bool isPrevButtonPressed;
+
     public GameObject phoneUI;
 
     public static bool PhoneONTaskFlag = false;
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
         //InputSystem用
         var pInput = GetComponent<PlayerInput>();
         var actionMap = pInput.currentActionMap;
         MoveRAction = actionMap["MoveR"];
         MoveLAction = actionMap["MoveL"];
         ButtonBAction = actionMap["ButtonB"];
+        StopAction = actionMap["Stop"];
+    }
+
+    public void OnStop(InputAction.CallbackContext context)
+    {
+        // ボタンが押された瞬間にisPrevButtonPressedをtrueにし、離されたらfalseにする
+        if (context.started)
+        {
+            isPrevButtonPressed = true;
+        }
+        else if (context.canceled)
+        {
+            isPrevButtonPressed = false;
+        }
     }
 
     void Start()
@@ -54,19 +76,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (ButtonManager.mainInput)
-        {
-            //InputSystem用
-            var pInput = GetComponent<PlayerInput>();
-            var actionMap = pInput.currentActionMap;
-            MoveRAction = actionMap["MoveR"];
-            MoveLAction = actionMap["MoveL"];
-            ButtonBAction = actionMap["ButtonB"];
-        }
-
         foreach (var device in InputSystem.devices)
         {
             Debug.Log("Connected device: " + device.name);
+        }
+
+        if (isPrevButtonPressed)
+        {
+            Debug.Log("止まる");
         }
 
 
@@ -77,9 +94,10 @@ public class PlayerMovement : MonoBehaviour
         bool MoveR = MoveRAction.triggered;
         bool MoveL = MoveLAction.triggered;
         bool ButtonB = ButtonBAction.triggered;
-        
+        bool StopRL = StopAction.triggered;
+
         // Shiftキーを押している間はプレイヤーを停止させる
-        if (!Input.GetKey(KeyCode.LeftShift))
+        if (!StopRL)
         {       
             // 前進
             transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
@@ -95,7 +113,9 @@ public class PlayerMovement : MonoBehaviour
             }
                 walk = false;
             }
-        }else{
+        }
+        else
+        {
             if (Audio.GetInstance().IsPlayingSound(0))
             {
                 Audio.GetInstance().StopLoopSound();
