@@ -17,11 +17,13 @@ public class PlaneScript : MonoBehaviour
     public int totalStages; // 生成するステージの総数
     public List<GameObject> StageList = new List<GameObject>();//生成したステージのリスト
     private PlayerMovement PlayerMovement;
+    private MiniGameManager MiniGameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerMovement = FindObjectOfType<PlayerMovement>();
+        MiniGameManager =  FindObjectOfType<MiniGameManager>();
         StageIndex = FirstStageIndex - 1;
         StageManager(aheadStage);
     }
@@ -38,6 +40,14 @@ public class PlaneScript : MonoBehaviour
         if(targetPosIndex + aheadStage > StageIndex)
         {
             StageManager(targetPosIndex + aheadStage);
+        }
+
+        if(MiniGameManager.MiniDeathID == 1){
+            GameOver.SetMessage("ゲームに夢中で穴に落ちて死んだ");
+            Scene.GetInstance().EndGame();
+        }else if(MiniGameManager.MiniDeathID == 2){
+            GameOver.SetMessage("ゲームに夢中で車に轢かれて死んだ");
+            Scene.GetInstance().EndGame();
         }
     }
     void StageManager(int maps)
