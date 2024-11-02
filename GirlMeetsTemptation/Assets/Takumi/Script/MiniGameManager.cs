@@ -68,6 +68,15 @@ public class MiniGameManager : MonoBehaviour
 
     void Update()
     {
+        if(Timelimit.Instance.getTemp() <= 0)
+        {
+            islunatic = false;
+        }else if(Timelimit.Instance.getTemp() >= 1)
+        {
+            islunatic = true;
+        }
+
+
         if (isOpen)
         {
             if (isStart)
@@ -113,6 +122,7 @@ public class MiniGameManager : MonoBehaviour
         else
         {
             Minitext.text = "3";
+            isOnce = false;
             time = 0;
             isStart = false;
             MapDestroy();
@@ -123,14 +133,13 @@ public class MiniGameManager : MonoBehaviour
 
         if (SubClear)
         {
-            //名声スコア+10
             SubClear = false;
             if (!isOnce)
             {
                 //名声スコア+10
-
+                FameManager.Instance.UpFgauge(10);
                 //Sound
-
+                Audio.Instance.SmartPlaySound(6);//ミッション達成音
                 StartCoroutine(SubMissionReset());
             }
 

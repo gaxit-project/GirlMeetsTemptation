@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 public class Timelimit : MonoBehaviour
 {
+    public static Timelimit Instance;
+
     //カウントダウン
     //public float countdown;
     public Image nizigauge;
@@ -90,5 +92,10 @@ public class Timelimit : MonoBehaviour
 
     public int getTime(){
         return displayTime;
+    }
+
+    public float getTemp()
+    {
+        return tempgauge.fillAmount;
     }
 }

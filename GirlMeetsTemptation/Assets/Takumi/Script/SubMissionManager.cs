@@ -52,7 +52,6 @@ public class SubMissionManager : MonoBehaviour
             {
                 MiniGameManager.SubClear = true;
                 SubMissionText.text = "ミッション\n達成";
-                Audio.Instance.SmartPlaySound(6);//ミッション達成音
             }
         }
         else if(MiniGameManager.SubMissionID == 2)//走る距離ミッション

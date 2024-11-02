@@ -10,6 +10,8 @@ public class FameManager : MonoBehaviour
     private float Fscore = 0f; //–¼ºƒQ[ƒW‘‰Á•ª—p•Ï”
     private float TimePerScore = 0.03f / 5f; //5•b‚É3%‚ÌŒ¸­
 
+    public static FameManager Instance;
+
     void Start()
     {
         Fgauge.fillAmount = 0.5f;
