@@ -80,8 +80,10 @@ public class GamePlayer : MonoBehaviour
         if (down)
         {
             //ButtonManager.instance.PlayInputSet();
+            MiniGameManager.isStart = false;
             MiniGameManager.isOpen = false;
         }
+        
         #endregion
 
         // X•ûŒü‚É©“®‚Åi‚Ş

@@ -15,7 +15,6 @@ public class ButtonManager : MonoBehaviour
     [Header("プレイヤー・プレイヤー入力")]
     public GameObject PlayerObj;
     private PlayerInput pInput;
-    public static bool mainInput;
 
     [Header("ミニゲーム入力")]
     public GameObject MiniObj;
@@ -43,17 +42,14 @@ public class ButtonManager : MonoBehaviour
         if (MiniGameManager.isOpen)
         {
             MiniInputSet();
-            mainInput = false;
         }
         else if (TwiXFlag)
         {
             LineInputSet();
-            mainInput = false;
         }
         else
         {
             PlayInputSet();
-            mainInput = true;
         }
     }
     public void ClickButton(string button)

@@ -64,7 +64,6 @@ public class MiniGameManager : MonoBehaviour
     {
         MiniDeathID = 0;
         MapGen.InitMapGen();
-
     }
 
     void Update()

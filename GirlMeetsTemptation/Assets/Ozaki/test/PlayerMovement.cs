@@ -81,11 +81,6 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Connected device: " + device.name);
         }
 
-        if (isPrevButtonPressed)
-        {
-            Debug.Log("止まる");
-        }
-
 
         if (holedead == null){
             holedead = FindObjectOfType<Holedead>();
@@ -96,21 +91,21 @@ public class PlayerMovement : MonoBehaviour
         bool ButtonB = ButtonBAction.triggered;
         bool StopRL = StopAction.triggered;
 
-        // Shiftキーを押している間はプレイヤーを停止させる
-        if (!StopRL)
-        {       
+        if (!isPrevButtonPressed)
+        {
             // 前進
             transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
-            if(walk){
-            if (!Audio.GetInstance().IsPlayingSound(0) && 
-            !Audio.GetInstance().IsPlayingSound(7) && 
-            !Audio.GetInstance().IsPlayingSound(8) && 
-            !Audio.GetInstance().IsPlayingSound(9) && 
-            !Audio.GetInstance().IsPlayingSound(10) && 
-            !Audio.GetInstance().IsPlayingSound(11))
+            if (walk)
             {
-                Audio.GetInstance().PlaySound(0);
-            }
+                if (!Audio.GetInstance().IsPlayingSound(0) &&
+                !Audio.GetInstance().IsPlayingSound(7) &&
+                !Audio.GetInstance().IsPlayingSound(8) &&
+                !Audio.GetInstance().IsPlayingSound(9) &&
+                !Audio.GetInstance().IsPlayingSound(10) &&
+                !Audio.GetInstance().IsPlayingSound(11))
+                {
+                    Audio.GetInstance().PlaySound(0);
+                }
                 walk = false;
             }
         }
@@ -121,9 +116,13 @@ public class PlayerMovement : MonoBehaviour
                 Audio.GetInstance().StopLoopSound();
                 Audio.GetInstance().PlaySound(12);
             }
-            
+
             walk = true;
         }
+
+
+
+
         // 左への移動
         if (MoveL && currentLane > 0 && !Input.GetKey(KeyCode.LeftShift))
         {
