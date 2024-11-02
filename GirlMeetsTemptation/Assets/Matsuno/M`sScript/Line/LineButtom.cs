@@ -132,14 +132,14 @@ public class LineButtom : MonoBehaviour
             // ¶‚Ö‚ÌˆÚ“®
             if (LineButtonL && PlayerMovement.currentLane > 0 && !Input.GetKey(KeyCode.LeftShift))
             {
-                PlayerMovement.currentLane--;
+                //PlayerMovement.currentLane--;
                 PlayerMovement.instance.MoveToLane();
             }
 
             // ‰E‚Ö‚ÌˆÚ“®
             if (LineButtonR && PlayerMovement.currentLane < 2 && !Input.GetKey(KeyCode.LeftShift))
             {
-                PlayerMovement.currentLane++;
+                //PlayerMovement.currentLane++;
                 PlayerMovement.instance.MoveToLane();
             }
             #endregion

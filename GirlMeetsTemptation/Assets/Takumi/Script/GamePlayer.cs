@@ -62,14 +62,14 @@ public class GamePlayer : MonoBehaviour
         // ¶‚Ö‚ÌˆÚ“®
         if (MoveL && PlayerMovement.currentLane > 0 && !Input.GetKey(KeyCode.LeftShift))
         {
-            PlayerMovement.currentLane--;
+            //PlayerMovement.currentLane--;
             PlayerMovement.instance.MoveToLane();
         }
 
         // ‰E‚Ö‚ÌˆÚ“®
         if (MoveR && PlayerMovement.currentLane < 2 && !Input.GetKey(KeyCode.LeftShift))
         {
-            PlayerMovement.currentLane++;
+            //PlayerMovement.currentLane++;
             PlayerMovement.instance.MoveToLane();
         }
         #endregion
