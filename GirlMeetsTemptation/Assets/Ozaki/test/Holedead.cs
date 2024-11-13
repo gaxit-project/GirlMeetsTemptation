@@ -43,7 +43,7 @@ public class Holedead : MonoBehaviour
             }
 
             // GameOver にメッセージを設定して、EndGame メソッドを呼び出す
-            GameOver.SetMessage(message);
+            MGameOver.SetMessage(message);
             Scene.GetInstance().EndGame();
             }
         }

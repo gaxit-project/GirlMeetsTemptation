@@ -66,6 +66,7 @@ public class GameOver : MonoBehaviour
     public static void SetMessage(string mes)
     {
         messageToDisplay = mes;
+        Debug.Log("messageToDisplay: " + messageToDisplay);
     }
 
 

@@ -43,10 +43,10 @@ public class PlaneScript : MonoBehaviour
         }
 
         if(MiniGameManager.MiniDeathID == 1){
-            GameOver.SetMessage("ゲームに夢中で穴に落ちて死んだ");
+            MGameOver.SetMessage("ゲームに夢中で穴に落ちて死んだ");
             Scene.GetInstance().EndGame();
         }else if(MiniGameManager.MiniDeathID == 2){
-            GameOver.SetMessage("ゲームに夢中で車に轢かれて死んだ");
+            MGameOver.SetMessage("ゲームに夢中で車に轢かれて死んだ");
             Scene.GetInstance().EndGame();
         }
     }

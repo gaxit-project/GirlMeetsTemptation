@@ -2,22 +2,23 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.EventSystems; // EventSystem‚ÌQÆ
+using UnityEngine.EventSystems; // EventSystemï¿½ÌQï¿½ï¿½
 
 public class MGameOver : MonoBehaviour
 {
     public Text gameOverText;
     private static string messageToDisplay;
-    public Button Restartbuttons; // ƒ{ƒ^ƒ“‚Ì”z—ñ‚ğInspector‚Åİ’è
-    public Button Titlebuttons; // ƒ{ƒ^ƒ“‚Ì”z—ñ‚ğInspector‚Åİ’è
-    private int selectedIndex = 0; // ‘I‘ğ’†‚Ìƒ{ƒ^ƒ“ƒCƒ“ƒfƒbƒNƒX
+    public Button Restartbuttons; // ï¿½{ï¿½^ï¿½ï¿½ï¿½Ì”zï¿½ï¿½ï¿½Inspectorï¿½Åİ’ï¿½
+    public Button Titlebuttons; // ï¿½{ï¿½^ï¿½ï¿½ï¿½Ì”zï¿½ï¿½ï¿½Inspectorï¿½Åİ’ï¿½
+    private int selectedIndex = 0; // ï¿½Iï¿½ğ’†‚Ìƒ{ï¿½^ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½X
 
     void Start()
     {
         //Audio.GetInstance().StopLoopSound();
         deadmes(messageToDisplay);
+        Audio.GetInstance().StopLoopSound();
 
-        //// Å‰‚É‘I‘ğ‚·‚éƒ{ƒ^ƒ“‚ğİ’è
+        //// ï¿½Åï¿½ï¿½É‘Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½İ’ï¿½
         //if (buttons.Length > 0)
         //{
         //    EventSystem.current.SetSelectedGameObject(buttons[0].gameObject);
@@ -27,7 +28,7 @@ public class MGameOver : MonoBehaviour
 
     void Update()
     {
-        // ‘I‘ğó‘Ô‚Ì•ÏX‚ÍEventSystem‚ÉˆË‘¶‚·‚é‚½‚ßAƒR[ƒh“à‚Åè“®‘€ì‚Í•s—v‚Å‚·
+        // ï¿½Iï¿½ï¿½ï¿½ï¿½Ô‚Ì•ÏXï¿½ï¿½EventSystemï¿½ÉˆË‘ï¿½ï¿½ï¿½ï¿½é‚½ï¿½ßAï¿½Rï¿½[ï¿½hï¿½ï¿½ï¿½Åè“®ï¿½ï¿½ï¿½ï¿½Í•sï¿½vï¿½Å‚ï¿½
     }
 
 
@@ -40,13 +41,13 @@ public class MGameOver : MonoBehaviour
         Scene.GetInstance().TitleGame();
     }
 
-    // ƒƒbƒZ[ƒW‚ğİ’è‚·‚éƒƒ\ƒbƒhi‘¼‚ÌƒV[ƒ“‚©‚çƒƒbƒZ[ƒW‚ğİ’è‚·‚éÛ‚ÉŒÄ‚Ño‚·j
+    // ï¿½ï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½ï¿½İ’è‚·ï¿½éƒï¿½\ï¿½bï¿½hï¿½iï¿½ï¿½ï¿½ÌƒVï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½çƒï¿½bï¿½Zï¿½[ï¿½Wï¿½ï¿½İ’è‚·ï¿½ï¿½Û‚ÉŒÄ‚Ñoï¿½ï¿½ï¿½j
     public static void SetMessage(string mes)
     {
         messageToDisplay = mes;
     }
 
-    // ƒƒbƒZ[ƒW‚ğ•\¦‚·‚éƒƒ\ƒbƒh
+    // ï¿½ï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½éƒï¿½\ï¿½bï¿½h
     public void deadmes(string mes)
     {
         if (gameOverText != null)
@@ -55,7 +56,7 @@ public class MGameOver : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("gameOverText ‚ªŠ„‚è“–‚Ä‚ç‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.LogWarning("gameOverText ï¿½ï¿½ï¿½ï¿½ï¿½è“–ï¿½Ä‚ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½B");
         }
     }
 }

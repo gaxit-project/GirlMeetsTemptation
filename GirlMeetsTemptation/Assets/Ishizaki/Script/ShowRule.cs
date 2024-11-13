@@ -46,10 +46,10 @@ public class ShowRule : MonoBehaviour
 
     void NextSlide()
     {
-        if (currentSlide < slides.Length - 1)
+        if (currentSlide < slides.Length)
         {
-            currentSlide++;
             ShowSlide(currentSlide);
+            currentSlide++;
         }
         else
         {

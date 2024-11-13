@@ -86,7 +86,7 @@ public class Timelimit : MonoBehaviour
         PlayerMovement.setphoneOn(true);
         PlayerMovement.setkyouran(true);
         yield return new WaitForSeconds(delay);
-        GameOver.SetMessage("踊り狂って死んだ");
+        MGameOver.SetMessage("踊り狂って死んだ");
         Scene.GetInstance().EndGame();
     }
 
