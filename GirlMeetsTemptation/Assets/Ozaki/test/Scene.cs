@@ -43,6 +43,9 @@ public class Scene : MonoBehaviour
     public void MainGame(){
         UnityEngine.SceneManagement.SceneManager.LoadScene("main");
     }
+    public void OPGame(){
+        UnityEngine.SceneManagement.SceneManager.LoadScene("op");
+    }
     public void EndGame() //Quit
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Gameover");

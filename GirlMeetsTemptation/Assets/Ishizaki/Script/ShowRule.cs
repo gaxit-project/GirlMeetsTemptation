@@ -10,11 +10,12 @@ public class ShowRule : MonoBehaviour
     public GameObject canvas;
     private int currentSlide = 0;
     private bool isShowingRules = false;
+    private opening opening;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        opening = FindObjectOfType<opening>();
     }
 
     public void StartShowRule()
@@ -23,6 +24,11 @@ public class ShowRule : MonoBehaviour
         canvas.SetActive(false);
         ruleCanvas.SetActive(true);
         isShowingRules = true;
+        if (opening != null)
+        {
+            opening.enabled = false;
+        }
+        Audio.GetInstance().StopLoopSound();
         ShowSlide(currentSlide);
     }
 
@@ -32,6 +38,9 @@ public class ShowRule : MonoBehaviour
         if (isShowingRules && Input.GetButtonDown("Submit"))
         {
             NextSlide();
+        }else if(!isShowingRules && Input.GetButtonDown("Submit"))
+        {
+            StartShowRule();
         }
     }
 
@@ -46,20 +55,19 @@ public class ShowRule : MonoBehaviour
 
     void NextSlide()
     {
+        currentSlide++;
         if (currentSlide < slides.Length)
         {
             ShowSlide(currentSlide);
-            currentSlide++;
+            
         }
         else
         {
-            StartGame();
+            Scene.GetInstance().MainGame();
         }
     }
 
-    void StartGame()
-    {
-        // ƒQ[ƒ€ƒV[ƒ“‚Ö‚Ì‘JˆÚ
-        Scene.GetInstance().MainGame();
-    }
+    
+
+
 }

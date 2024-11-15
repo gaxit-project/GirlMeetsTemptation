@@ -12,24 +12,25 @@ public class Titleplayer : MonoBehaviour
     private int aheadStage = 4; //事前に生成しておくステージ
     public int totalStages; // 生成するステージの総数
     public List<GameObject> StageList = new List<GameObject>();//生成したステージのリスト
+    public CanvasGroup panelCanvasGroup;
 
     public Button[] buttons; // ボタンの配列をInspectorで設定
     private int selectedIndex = 0; // 選択中のボタンインデックス
 
     //ルール説明用
-    public ShowRule rule;
-    public GameObject RuleCanvas;
+    //public ShowRule rule;
+    //public GameObject RuleCanvas;
 
     void Start()
     {
         StageManager(aheadStage);
         // ボタンのセットアップ
-        SetUpButton(0, rule.StartShowRule);
+        SetUpButton(0, () => StartCoroutine(MainGameScene()));
         SetUpButton(1, QuitGameScene);
 
         UpdateButtonSelection();
 
-        RuleCanvas.SetActive(false);
+        //RuleCanvas.SetActive(false);
     }
     private void SetUpButton(int index, UnityEngine.Events.UnityAction action)
     {
@@ -47,9 +48,21 @@ public class Titleplayer : MonoBehaviour
             buttons[i].colors = colors;
         }
     }
-    void MainGameScene()
+    public IEnumerator FadeInPanel(float duration)
     {
-        Scene.GetInstance().MainGame();
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            panelCanvasGroup.alpha = Mathf.Clamp01(elapsed / duration);
+            yield return null;
+        }
+        panelCanvasGroup.alpha = 1f; // 完全に表示
+    }
+    public IEnumerator MainGameScene()
+    {
+        yield return StartCoroutine(FadeInPanel(1f)); // フェードインアニメーションを実行
+        Scene.GetInstance().OPGame();
     }
     void QuitGameScene()
     {
