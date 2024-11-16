@@ -6,14 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Ozaki/Title.unity
+    guid: ac4d6099e02a1b94c97ffb8b15f14959
+  - enabled: 1
+    path: Assets/Ozaki/op.unity
+    guid: bb18d4ce537a6594cb3cbd6f0b02fae0
+  - enabled: 1
     path: Assets/Scenes/main.unity
     guid: 734c30008081671428957aeebd975acd
   - enabled: 1
     path: Assets/Ozaki/Gameover.unity
     guid: 9575d4b1298d46740811ce05a5b789ad
-  - enabled: 1
-    path: Assets/Ozaki/Title.unity
-    guid: ac4d6099e02a1b94c97ffb8b15f14959
   - enabled: 1
     path: Assets/Ozaki/GameClear.unity
     guid: 64562943689ab474a93ac3c7688e3a4e
