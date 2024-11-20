@@ -92,21 +92,21 @@ public class ButtonManager : MonoBehaviour
     public void PlayInputSet()
     {
         pInput.enabled = true;
-        MiniInput.enabled = false;
-        LineInput.enabled = false;
+        /*MiniInput.enabled = false;
+        LineInput.enabled = false;*/
     }
 
     public void MiniInputSet()
     {
         MiniInput.enabled = true;
-        pInput.enabled = false;
-        LineInput.enabled = false;
+        /*pInput.enabled = false;
+        LineInput.enabled = false;*/
     }
 
     public void LineInputSet()
     {
         LineInput.enabled = true;
-        pInput.enabled = false;
-        MiniInput.enabled = false;
+        /*pInput.enabled = false;
+        MiniInput.enabled = false;*/
     }
 }
