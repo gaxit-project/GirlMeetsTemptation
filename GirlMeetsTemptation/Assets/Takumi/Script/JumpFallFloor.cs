@@ -14,7 +14,7 @@ public class JumpFallFloor : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            Debug.Log("“§‰ß");
+            Debug.Log("—‰º1");
             playerCollider = col.gameObject.GetComponent<Collider>();
             // Õ“Ë‚ğˆê“I‚É–³Œø‚É‚·‚é
             Physics.IgnoreCollision(playerCollider, floorCollider, true);
@@ -25,7 +25,7 @@ public class JumpFallFloor : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            Debug.Log("“§‰ß");
+            Debug.Log("—‰º2");
             playerCollider = col.gameObject.GetComponent<Collider>();
             // Õ“Ë‚ğˆê“I‚É–³Œø‚É‚·‚é
             Physics.IgnoreCollision(playerCollider, floorCollider, true);

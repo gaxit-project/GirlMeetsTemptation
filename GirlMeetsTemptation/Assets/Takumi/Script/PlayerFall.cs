@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerFall : MonoBehaviour
 {
+    /*
     [Header("ƒvƒŒƒCƒ„[")]
     public Transform Player;
 
@@ -74,4 +75,5 @@ public class PlayerFall : MonoBehaviour
             }
         }
     }
+    */
 }

@@ -27,13 +27,16 @@ public class GamePlayer : MonoBehaviour
 
     [Header("プレイヤー設定")]
     bool isFall = false;
+    bool BotFall = true;
     float time = 0f;
     public bool jump;
     public bool fall;
+    bool fallOnce = false;
 
 
     //床のcollider
     private Collider floorCol;
+    private Collider OldFloor;
 
     void OnEnable()
     {
@@ -45,7 +48,11 @@ public class GamePlayer : MonoBehaviour
         ShotDownAction = actionMap["Shutdown"];
         MoveRAction = actionMap["MoveR"];
         MoveLAction = actionMap["MoveL"];
-        
+
+        playerCol.enabled = true;
+        isFall = false;
+        BotFall = true;
+        fallOnce = false;
     }
 
 
@@ -118,13 +125,18 @@ public class GamePlayer : MonoBehaviour
             Debug.Log("ジャンプ");
         }
 
-        if (isFall)
+        if (fall && !fallOnce)
+        {
+            FallPlayer();
+        }
+
+        if (isFall && OldFloor != null)
         {
             time += Time.deltaTime;
-            if (time > 0.6f)
+            if (time > 0.5f)
             {
+                Physics.IgnoreCollision(playerCol, OldFloor, false);
                 playerCol.enabled = true;
-                //Physics.IgnoreCollision(playerCol, floorCol, true);
                 isFall = false;
                 time = 0f;
             }
@@ -140,18 +152,21 @@ public class GamePlayer : MonoBehaviour
         if (col.gameObject.CompareTag("Bot") || col.gameObject.CompareTag("Mid") || col.gameObject.CompareTag("Top"))
         {
             isGrounded = true;
+            fallOnce = false;
         }
 
         if (col.gameObject.CompareTag("Mid") || col.gameObject.CompareTag("Top"))
         {
             floorCol = col.gameObject.GetComponent<Collider>();
+            BotFall = false;
+            fallOnce = false;
             if (fall)
             {
-                // 衝突を一時的に無効にする
-                playerCol.enabled = false; ;
-                //Physics.IgnoreCollision(playerCol, floorCol, true);
                 isFall = true;
-                Audio.Instance.SmartPlaySound(1);//落ちる音
+            }
+            if (col.gameObject.CompareTag("Bot"))
+            {
+                BotFall = true;
             }
         }
 
@@ -191,11 +206,12 @@ public class GamePlayer : MonoBehaviour
             floorCol = col.gameObject.GetComponent<Collider>();
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                // 衝突を一時的に無効にする
-                playerCol.enabled = false; ;
-                //Physics.IgnoreCollision(playerCol, floorCol, true);
                 isFall = true;
             }
+        }
+        if (col.gameObject.CompareTag("Bot"))
+        {
+            BotFall = true;
         }
         if (col.CompareTag("Coin"))
         {
@@ -210,17 +226,31 @@ public class GamePlayer : MonoBehaviour
         if (col.gameObject.CompareTag("Mid") || col.gameObject.CompareTag("Top"))
         {
             floorCol = col.gameObject.GetComponent<Collider>();
+            BotFall = false;
             if (fall)
             {
-                // 衝突を一時的に無効にする
-                playerCol.enabled = false;
-                //Physics.IgnoreCollision(playerCol, floorCol, true);
                 isFall = true;
-                Audio.Instance.SmartPlaySound(1);//落ちる音
+
             }
+        }
+        if (col.gameObject.CompareTag("Bot"))
+        {
+            BotFall = true;
         }
     }
 
 
-
+    void FallPlayer()
+    {
+        //
+        if (!BotFall && floorCol != null)
+        {
+            Physics.IgnoreCollision(playerCol, floorCol, true);
+            playerCol.enabled = false;
+            OldFloor = floorCol;
+            isFall = true;
+            fallOnce = true;
+            Audio.Instance.SmartPlaySound(1);//落ちる音
+        }
+    }
 }
