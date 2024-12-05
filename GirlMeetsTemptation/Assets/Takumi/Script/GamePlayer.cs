@@ -117,17 +117,20 @@ public class GamePlayer : MonoBehaviour
         //animator.SetFloat("speed", playerSpeed);
 
         // ジャンプ
-        if (jump && isGrounded)
+        float dps_v = Input.GetAxis("D_Pad_V");
+        if ((jump || Input.GetKeyDown("w") || dps_v >= 0.9) && isGrounded)
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
             isGrounded = false; // ジャンプ中は地面にいないとみなす
             Audio.Instance.SmartPlaySound(0);//ジャンプ音
             Debug.Log("ジャンプ");
+            dps_v = 0f;
         }
 
-        if (fall && !fallOnce)
+        if ((fall || Input.GetKeyDown("s") || dps_v <= -0.9) && !fallOnce)
         {
             FallPlayer();
+            dps_v = 0f;
         }
 
         if (isFall && OldFloor != null)
@@ -141,9 +144,6 @@ public class GamePlayer : MonoBehaviour
                 time = 0f;
             }
         }
-
-
-
     }
 
     private void OnCollisionEnter(Collision col)

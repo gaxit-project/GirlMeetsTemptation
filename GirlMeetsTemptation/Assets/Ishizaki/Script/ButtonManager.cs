@@ -34,6 +34,7 @@ public class ButtonManager : MonoBehaviour
         MiniInput = MiniObj.GetComponent<PlayerInput>();
         LineInput = LineObj.GetComponent<PlayerInput>();
         PlayInputSet();
+        MiniGameManager.isOpen = false;
         Debug.Log("プレイヤー入力可能");
     }
 
