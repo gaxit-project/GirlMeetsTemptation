@@ -23,6 +23,7 @@ public class MarkDeleyr : MonoBehaviour
         // タグが "player" のオブジェクトに当たった場合
         if (other.CompareTag("Player"))
         {
+            Audio.GetInstance().PlaySound(13);
             PlayerMovement.enabled = false;
             holed = true;
             Destroy(this.gameObject);

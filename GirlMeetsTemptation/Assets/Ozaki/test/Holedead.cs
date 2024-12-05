@@ -32,9 +32,11 @@ public class Holedead : MonoBehaviour
             switch (gameObject.name)
             {
                 case "hole":
+                
                     message = "穴に落ちて死んだ";
                     break;
                 case "Car":
+                Audio.GetInstance().PlaySound(14);
                     message = "車に轢かれて死んだ";
                     break;
                 default:
