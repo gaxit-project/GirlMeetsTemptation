@@ -81,7 +81,39 @@ public class LineButtom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Karepi.Select();
+        KarepiFlag = false;
+        ManeChanFlag = false;
+        OshiFlag = false;
+        Tomodati1Flag = false;
+        Tomodati2Flag = false;
+        XButtonFlag = false;
+        CButtonFlag = false;
+        VButtonFlag = false;
+        ButtonOFFFlag = false;
+        SelectFlag = false;
+
+    Text1 = false;
+     Text2 = false;
+     Text3 = false;
+     Text4 = false;
+    Text5 = false;
+    Text6 = false;
+     Text7 = false;
+     Text8 = false;
+    Text9 = false;
+    Text10 = false;
+    Text11 = false;
+    Text12 = false;
+     Text13 = false;
+     Text14 = false;
+     Text15 = false;
+     Text16 = false;
+     Text17 = false;
+     Text18 = false;
+     FirstText = false;
+     TextRndFlag = true;
+    SelectTextUIFlag = false;
+    Karepi.Select();
         if (!ButtonManager.TwiXFlag)
         {
             TalkHome.SetActive(false);
@@ -102,8 +134,17 @@ public class LineButtom : MonoBehaviour
         PhoneLineUI.SetActive(true);
         Karepi.Select();
         ButtonManager.TwiXFirstFlag = false;
-        
-        var pInput = GetComponent<PlayerInput>();
+        LinePerfect = false;
+        LineNormal = false;
+        LineBad = false;
+        Evaluation = false;
+    XButtonFlag = false;
+    CButtonFlag = false;
+    VButtonFlag = false;
+    ButtonOFFFlag = false;
+    SelectFlag = false;
+
+    var pInput = GetComponent<PlayerInput>();
         var actionMap = pInput.currentActionMap;
         LineX = actionMap["LineSelectX"];
         LineA = actionMap["LineSelectA"];
