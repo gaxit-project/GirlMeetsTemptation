@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float firstSpeed;
     public Camera playcamera;
     public static int currentLane = 1; // 0: 左, 1: 中央, 2: 右 (初期位置は中央)
-    private bool phoneOn = true;      
+    private bool phoneOn = false;      
     private float elapsedTime = 0f;  // 経過時間を保持する変数
     private bool isCounting = false;  // 計測中かどうかを示すフラグ
     private bool walk = true;//歩いているかフラグ
