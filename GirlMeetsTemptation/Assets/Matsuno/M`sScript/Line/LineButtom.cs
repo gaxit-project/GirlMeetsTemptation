@@ -171,14 +171,14 @@ public class LineButtom : MonoBehaviour
 
             #region メインゲームレーン移動
             // 左への移動
-            if (LineButtonL && PlayerMovement.currentLane > 0 && !Input.GetKey(KeyCode.LeftShift))
+            if ((LineButtonL || Input.GetKey(KeyCode.Q)) && PlayerMovement.currentLane > 0 && !Input.GetKey(KeyCode.LeftShift))
             {
                 //PlayerMovement.currentLane--;
                 PlayerMovement.instance.MoveToLane();
             }
 
             // 右への移動
-            if (LineButtonR && PlayerMovement.currentLane < 2 && !Input.GetKey(KeyCode.LeftShift))
+            if ((LineButtonR || Input.GetKey(KeyCode.E)) && PlayerMovement.currentLane < 2 && !Input.GetKey(KeyCode.LeftShift))
             {
                 //PlayerMovement.currentLane++;
                 PlayerMovement.instance.MoveToLane();
@@ -190,7 +190,7 @@ public class LineButtom : MonoBehaviour
 
 
             #region アプリを閉じる
-            if (LineButtonY)
+            if (LineButtonY || Input.GetKey(KeyCode.Tab))
             {
                 TalkHome.SetActive(true);
                 KarepiTalk.SetActive(false);
@@ -227,7 +227,7 @@ public class LineButtom : MonoBehaviour
             }
             #endregion
 
-            if (LineButtonX && !ButtonOFFFlag)
+            if ((LineButtonX || Input.GetKey(KeyCode.A)) && !ButtonOFFFlag)
             {
                 if (SelectFlag)
                 {
@@ -242,7 +242,7 @@ public class LineButtom : MonoBehaviour
                 SelectTextUIFlag = false;
                 ButtonOFFFlag = true;
             }
-            else if (LineButtonA && !ButtonOFFFlag)
+            else if ((LineButtonA || Input.GetKey(KeyCode.S))&& !ButtonOFFFlag)
             {
                 if (SelectFlag)
                 {
@@ -257,7 +257,7 @@ public class LineButtom : MonoBehaviour
                 SelectTextUIFlag = false;
                 ButtonOFFFlag = true;
             }
-            else if (LineButtonB && !ButtonOFFFlag)
+            else if ((LineButtonB || Input.GetKey(KeyCode.D)) && !ButtonOFFFlag)
             {
                 if (SelectFlag)
                 {

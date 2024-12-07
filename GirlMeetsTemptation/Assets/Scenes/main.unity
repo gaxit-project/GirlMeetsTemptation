@@ -16672,9 +16672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ac0f6fac052974bb90362a1ff0e8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 836509384}
-  playerCol: {fileID: 836509385}
-  floorCol: {fileID: 0}
 --- !u!54 &1758423889
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18774,7 +18771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcbbd842070fe1948bf9dd1b3ebfed7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
+  Target: {fileID: 1614325261}
   stagenum:
   - {fileID: 5631680600301392931, guid: 0d0a5f655e97b0343947176c7b225061, type: 3}
   - {fileID: 6475030808448374611, guid: ba3136939dfd05f41bd2f43cf4988b07, type: 3}

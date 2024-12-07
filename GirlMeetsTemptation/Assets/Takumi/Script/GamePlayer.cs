@@ -67,14 +67,14 @@ public class GamePlayer : MonoBehaviour
 
         #region メインゲームレーン移動
         // 左への移動
-        if (MoveL && PlayerMovement.currentLane > 0 && !Input.GetKey(KeyCode.LeftShift))
+        if ((MoveL || Input.GetKey(KeyCode.Q)) && PlayerMovement.currentLane > 0 && !Input.GetKey(KeyCode.LeftShift))
         {
             //PlayerMovement.currentLane--;
             PlayerMovement.instance.MoveToLane();
         }
 
         // 右への移動
-        if (MoveR && PlayerMovement.currentLane < 2 && !Input.GetKey(KeyCode.LeftShift))
+        if ((MoveR || Input.GetKey(KeyCode.E)) && PlayerMovement.currentLane < 2 && !Input.GetKey(KeyCode.LeftShift))
         {
             //PlayerMovement.currentLane++;
             PlayerMovement.instance.MoveToLane();

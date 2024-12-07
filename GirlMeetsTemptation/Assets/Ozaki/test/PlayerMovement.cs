@@ -62,7 +62,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         // 初期回転角度を設定
-        targetRotation = playcamera.transform.rotation;
+        targetRotation = /*playcamera.transform.rotation;*/
+            Quaternion.Euler(0, playcamera.transform.rotation.eulerAngles.y, playcamera.transform.rotation.eulerAngles.z);
         firstSpeed = moveSpeed;
         holedead = FindObjectOfType<Holedead>();
         //InputSystem用
@@ -91,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
         bool ButtonB = ButtonBAction.triggered;
         bool StopRL = StopAction.triggered;
 
-        if (!isPrevButtonPressed)
+        if (!isPrevButtonPressed && !Input.GetKey(KeyCode.LeftShift))
         {
             // 前進
             transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
@@ -116,7 +117,6 @@ public class PlayerMovement : MonoBehaviour
                 Audio.GetInstance().StopLoopSound();
                 Audio.GetInstance().PlaySound(12);
             }
-
             walk = true;
         }
 
@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //カメラの向きを変える
-        if (ButtonB && !kyouran)
+        if ((ButtonB || Input.GetKey(KeyCode.D)) && !kyouran)
         {
             phoneOn=!phoneOn;
             if(!phoneOn){
