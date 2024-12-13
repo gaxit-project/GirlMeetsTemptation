@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //カメラの向きを変える
-        if ((ButtonB || Input.GetKey(KeyCode.D)) && !kyouran)
+        if ((ButtonB || Input.GetKeyDown(KeyCode.D)) && !kyouran)
         {
             phoneOn=!phoneOn;
             if(!phoneOn){
